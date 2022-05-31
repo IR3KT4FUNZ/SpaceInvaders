@@ -10,7 +10,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Thread gameThread;
   public Image image;
   public Graphics graphics;
-  public Alien[][] = new Alien[11][5];
+  public Alien[][] aliens = new Alien[11][5];
 
 
   public GamePanel(){
