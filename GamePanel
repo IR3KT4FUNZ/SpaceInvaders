@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 
   public GamePanel(){
-    ship = new PlayerShip(760, GAME_WIDTH/2)
+    ship = new PlayerShip(GAME_WIDTH/2, PlayerShip.YCOORD)
   
     this.setFocusable(true); //make everything in this class appear on the screen
     this.addKeyListener(this); //start listening for keyboard input
