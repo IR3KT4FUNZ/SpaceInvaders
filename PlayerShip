@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
 
+//Player controlled ship for space invaders
+//Eric, Elliot, 05/31/2022
+
 public class PlayerShip extends Rectangle {
   public FINAL HEIGHT = 20; //height of ship
   public FINAL WIDTH = 10; //width of ship
