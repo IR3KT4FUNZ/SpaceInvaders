@@ -21,7 +21,7 @@ public class PlayerShip extends Rectangle {
   //check for controls being pressed
   public void keyPressed(KeyEvent e) {
     if (e.getKeyChar() == 'z') {
-      velocty = SPEED * -1;
+      velocity = SPEED * -1;
     } 
     if (e.getKeyChar() == 'x') {
       velocity = SPEED;
@@ -34,7 +34,7 @@ public class PlayerShip extends Rectangle {
   //check for controls being released
   public void keyReleased(KeyEvent e) {
     if (e.getKeyChar() == 'z') {
-      velocty = 0;
+      velocity = 0;
     } 
     if (e.getKeyChar() == 'x') {
       velocity = 0;
