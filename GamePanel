@@ -1,0 +1,75 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class GamePanel extends JPanel implements Runnable, KeyListener{
+
+  public static final int GAME_WIDTH = 1000;
+  public static final int GAME_HEIGHT = 800;
+  public Thread gameThread;
+  public Image image;
+  public Graphics graphics;
+  public PlayerBall ball;
+
+
+  public GamePanel(){
+    this.setFocusable(true); //make everything in this class appear on the screen
+    this.addKeyListener(this); //start listening for keyboard input
+    this.setPreferredSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
+    gameThread = new Thread(this);
+    gameThread.start();
+  }
+  
+  public void paint(Graphics g){
+    image = createImage(GAME_WIDTH, GAME_HEIGHT);
+    graphics = image.getGraphics();
+    draw(graphics);
+    g.drawImage(image, 0, 0, this);
+
+  }
+
+  public void draw(Graphics g){
+    
+  }
+
+  public void move(){
+    
+  }
+
+  public void checkCollision(){
+    
+  }
+
+  public void run(){
+    long lastTime = System.nanoTime();
+    double amountOfTicks = 60;
+    double ns = 1000000000/amountOfTicks;
+    double delta = 0;
+    long now;
+
+    while(true){ 
+      now = System.nanoTime();
+      delta = delta + (now-lastTime)/ns;
+      lastTime = now;
+      
+      if(delta >= 1){
+        move();
+        checkCollision();
+        repaint();
+        delta--;
+      }
+    }
+  }
+
+  public void keyPressed(KeyEvent e){
+    
+  }
+
+  public void keyReleased(KeyEvent e){
+    
+  }
+
+  public void keyTyped(KeyEvent e){
+
+  }
+}
