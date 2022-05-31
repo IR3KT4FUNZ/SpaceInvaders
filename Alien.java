@@ -21,7 +21,7 @@ public class Alien extends Rectangle{
 
   //update the position of the ball (called from GamePanel frequently)
   public void move(){
-	  x = x + xspeed;
+    x = x + xspeed;
     y = y + yspeed;
   }
 
