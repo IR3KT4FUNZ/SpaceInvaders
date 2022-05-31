@@ -4,12 +4,11 @@ import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
-  public static final int GAME_WIDTH = 1000;
-  public static final int GAME_HEIGHT = 800;
+  public static final int GAME_WIDTH = 800;
+  public static final int GAME_HEIGHT = 1000;
   public Thread gameThread;
   public Image image;
   public Graphics graphics;
-  public PlayerBall ball;
 
 
   public GamePanel(){
