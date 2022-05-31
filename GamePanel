@@ -16,6 +16,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   public GamePanel(){
     ship = new PlayerShip(GAME_WIDTH/2, PlayerShip.YCOORD)
+    for(int i = 0; i < 11; ++i){
+      for(int j = 0; j < 5; ++j){
+        //intialization of each alien object
+      }
+    }
   
     this.setFocusable(true); //make everything in this class appear on the screen
     this.addKeyListener(this); //start listening for keyboard input
