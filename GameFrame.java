@@ -14,7 +14,7 @@ public class GameFrame extends JFrame{
   public GameFrame(){
     panel = new GamePanel(); //run GamePanel constructor
     this.add(panel);
-    this.setTitle("Pong!"); //set title for frame
+    this.setTitle("Space Invaders"); //set title for frame
     this.setResizable(false); //frame can't change size
     this.setBackground(Color.black);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //X button will stop program execution
