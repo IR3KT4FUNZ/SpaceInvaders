@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public GamePanel(){
     int x, y = 20; // coordinates for setting each alien position
   
-    ship = new PlayerShip(GAME_WIDTH/2, PlayerShip.YCOORD)
+    ship = new PlayerShip(GAME_WIDTH/2 - ship.WIDTH / 2, PlayerShip.YCOORD)
     for(int i = 0; i < 11; ++i){
       x = 20; // change to the first alien position later(make it so its centered)
     
@@ -52,10 +52,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
         }
       }
     }
+    ship.draw();
   }
 
   public void move(){
-  
+    ship.move();
   }
 
   public void checkCollision(){
