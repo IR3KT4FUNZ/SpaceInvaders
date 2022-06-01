@@ -15,11 +15,18 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 
   public GamePanel(){
+    int x, y = 20; // coordinates for setting each alien position
+  
     ship = new PlayerShip(GAME_WIDTH/2, PlayerShip.YCOORD)
     for(int i = 0; i < 11; ++i){
+      x = 20; // change to the first alien position later(make it so its centered)
+    
       for(int j = 0; j < 5; ++j){
         //intialization of each alien object
+        aliens[i][j] = new Alien(x, y);
       }
+      
+      y += 40; // next row of aliens
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -42,11 +49,28 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void move(){
-    
+    for(int i = 0; i < 11; ++i){
+      for(int j = 0; j < 5; ++j){
+        aliens[i][j].draw(g);
+      }
+    }
   }
 
   public void checkCollision(){
+    //forces ship to remain on screen
+    if(ship.x<= 0){
+      paddle1.x = 0;
+    }
     
+    if(ship.x >= GAME_WIDTH - PlayerShip.WIDTH){
+      ship.x = GAME_WIDTH - PlayerShip.WIDTH;
+    }
+  
+  
+    //checks if projectile hits alien
+    //checks if projectile hits house/wall
+    //checks if projectile hits player ship
+    //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
   }
 
   public void run(){
