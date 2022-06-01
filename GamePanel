@@ -45,15 +45,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void draw(Graphics g){
-    
+    for(int i = 0; i < 11; ++i){
+      for(int j = 0; j < 5; ++j){
+        if(aliens[i][j].dead == false){
+          aliens[i][j].draw(g);
+        }
+      }
+    }
   }
 
   public void move(){
-    for(int i = 0; i < 11; ++i){
-      for(int j = 0; j < 5; ++j){
-        aliens[i][j].draw(g);
-      }
-    }
+  
   }
 
   public void checkCollision(){
@@ -67,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
   
   
-    //checks if projectile hits alien
+    //checks if projectile hits alien, then makes alien[i][j].dead = true
     //checks if projectile hits house/wall
     //checks if projectile hits player ship
     //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
