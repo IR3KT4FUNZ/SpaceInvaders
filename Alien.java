@@ -11,6 +11,7 @@ public class Alien extends Rectangle{
   public static int yspeed; //move speed in vertical direction
   public static int xspeed; //move speed in horizontal direction
   public static final int Alien_WIDTH = 20; //size of Alien
+  public boolean dead = false;
   
   //constructor creates the Alien
   public Alien(int x, int y){
