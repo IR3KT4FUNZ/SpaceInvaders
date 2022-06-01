@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class PlayerShip extends Rectangle {
   public int FINAL HEIGHT = 20; //height of ship
-  public int FINAL WIDTH = 10; //width of ship
+  public int FINAL WIDTH = 20; //width of ship
   public int FINAL YCOORD = 750; //constant y coordinate of ship
   public int FINAL SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
