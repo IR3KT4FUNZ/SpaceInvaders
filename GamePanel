@@ -14,11 +14,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public PlayerShip ship;
   public Menu start;
   public long startTime(); //when game starts, set starttime to that time
+  public Score score;
+  
   public GamePanel(){
     int x, y = 20; // coordinates for setting each alien position
   
     ship = new PlayerShip(GAME_WIDTH/2 - ship.WIDTH / 2, PlayerShip.YCOORD);
     start = new Menu(GAME_WIDTH, GAME_HEIGHT);
+    score = new Score(GAME_WIDTH, GAME_HEIGHT);
     
     for(int i = 0; i < 11; ++i){
       x = 20; // change to the first alien position later(make it so its centered)
@@ -72,7 +75,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
   
   
-    //checks if projectile hits alien, then makes alien[i][j].dead = true
+    //checks if projectile hits alien, then makes alien[i][j].dead = true, increase score
     //checks if projectile hits house/wall
     //checks if projectile hits player ship
     //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
