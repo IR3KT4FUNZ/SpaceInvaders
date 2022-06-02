@@ -104,6 +104,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     if(Menu.check == false) { // checks if title has been displayed yet or not
     	start.keyPressed(e);
     }
+    else{
+      ship.keyPressed(e);
+    }
   }
 
   public void keyReleased(KeyEvent e){
