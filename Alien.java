@@ -17,7 +17,7 @@ public class Alien extends Rectangle{
   public Alien(int x, int y){
     super(x, y, ALIEN_WIDTH, ALIEN_WIDTH);
     yspeed = 0;
-    x speed = 5;
+    x speed = 0;
   }
 
   //update the position of the ball (called from GamePanel frequently)
