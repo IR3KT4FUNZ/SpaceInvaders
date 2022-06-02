@@ -12,12 +12,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Graphics graphics;
   public Alien[][] aliens = new Alien[11][5];
   public PlayerShip ship;
+  public Menu start;
 
 
   public GamePanel(){
     int x, y = 20; // coordinates for setting each alien position
   
-    ship = new PlayerShip(GAME_WIDTH/2 - ship.WIDTH / 2, PlayerShip.YCOORD)
+    ship = new PlayerShip(GAME_WIDTH/2 - ship.WIDTH / 2, PlayerShip.YCOORD);
+    start = new Menu(GAME_WIDTH, GAME_HEIGHT);
+    
     for(int i = 0; i < 11; ++i){
       x = 20; // change to the first alien position later(make it so its centered)
     
@@ -98,7 +101,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void keyPressed(KeyEvent e){
-    
+    if(Menu.check == false) { // checks if title has been displayed yet or not
+    	start.keyPressed(e);
+    }
   }
 
   public void keyReleased(KeyEvent e){
