@@ -15,9 +15,10 @@ public class Menu{
   }
   
   public void keyPressed(KeyEvent e){
-	 if(e.getKeyChar() == 'g'){ // checks if g key is pressed to continue
+	 if(e.getKeyChar() == 'v'){ // checks if g key is pressed to continue
 	   check = true; // indicates title has been displayed
 	   Alien.xspeed = 5; // starts movement of alien
+	   panel.startTime = System.nanoTime();a
 	 }
   }
   
