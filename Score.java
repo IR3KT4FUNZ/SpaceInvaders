@@ -1,5 +1,4 @@
 //Score class handles the game score
-//child of Rectangle because it makes it easy to format and draw to the screen
 import java.awt.*;
 
 public class Score{
