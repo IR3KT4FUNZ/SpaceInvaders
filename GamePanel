@@ -50,14 +50,19 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void draw(Graphics g){
-    for(int i = 0; i < 11; ++i){
-      for(int j = 0; j < 5; ++j){
-        if(aliens[i][j].dead == false){
-          aliens[i][j].draw(g);
+    if(Menu.check == false) { // checks if title has been displayed yet or not
+    	start.draw(g);
+    }
+    else{
+      for(int i = 0; i < 11; ++i){
+        for(int j = 0; j < 5; ++j){
+          if(aliens[i][j].dead == false){
+            aliens[i][j].draw(g);
+          }
         }
       }
+      ship.draw();
     }
-    ship.draw();
   }
 
   public void move(){
@@ -76,9 +81,27 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   
   
     //checks if projectile hits alien, then makes alien[i][j].dead = true, increase score
+    for(int i = 0; i < 11; ++i){
+        for(int j = 0; j < 5; ++j){
+          if(aliens[i][j].intersects(projectile)){ //change the projectile name to the name of the projectile object later
+            aliens[i][j].dead = true;
+            score.score += 100;
+          }
+        }
+      }
+      
     //checks if projectile hits house/wall
+    
     //checks if projectile hits player ship
+    if(projectile.intersects(ship)){ //change the projectile name to the name of the projectile object later
+       //add code here that decreases number of lives
+       //also add code that if number of lives = 0, then display the end screen and stop game
+    }
+    
     //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
+    
+    //add check that if all aliens dead, then resets wave(i.e. make aliens[i][j].dead == false and reset all the x y positions to the original position)
+    //not sure if that goes in the check collision method
   }
 
   public void run(){
