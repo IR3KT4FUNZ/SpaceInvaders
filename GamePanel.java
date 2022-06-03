@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void draw(Graphics g){
-    if(Menu.check == false) { // checks if title has been displayed yet or not
+    if(Title.check == false) { // checks if title has been displayed yet or not
     	start.draw(g);
     }
     else{
@@ -72,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public void checkCollision(){
     //forces ship to remain on screen
     if(ship.x<= 0){
-      paddle1.x = 0;
+      ship.x = 0;
     }
     
     if(ship.x >= GAME_WIDTH - PlayerShip.WIDTH){
@@ -126,7 +126,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void keyPressed(KeyEvent e){
-    if(Menu.check == false) { // checks if title has been displayed yet or not
+    if(Title.check == false) { // checks if title has been displayed yet or not
     	start.keyPressed(e);
     }
     else{
