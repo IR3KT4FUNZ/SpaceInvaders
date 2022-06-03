@@ -10,14 +10,14 @@ public class Alien extends Rectangle{
 
   public static int yspeed; //move speed in vertical direction
   public static int xspeed; //move speed in horizontal direction
-  public static final int Alien_WIDTH = 20; //size of Alien
+  public static final int ALIEN_WIDTH = 20; //size of Alien
   public boolean dead = false;
   
   //constructor creates the Alien
   public Alien(int x, int y){
     super(x, y, ALIEN_WIDTH, ALIEN_WIDTH);
     yspeed = 0;
-    x speed = 0;
+    xspeed = 0;
   }
 
   //update the position of the ball (called from GamePanel frequently)
