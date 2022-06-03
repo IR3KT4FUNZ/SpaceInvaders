@@ -5,10 +5,10 @@ import java.awt.event.*;
 //Eric, Elliot, 05/31/2022
 
 public class PlayerShip extends Rectangle {
-  public int FINAL HEIGHT = 20; //height of ship
-  public int FINAL WIDTH = 20; //width of ship
-  public int FINAL YCOORD = 750; //constant y coordinate of ship
-  public int FINAL SPEED = 10; //speed the ship always moves at
+  public static final int HEIGHT = 20; //height of ship
+  public static final int WIDTH = 20; //width of ship
+  public static final int YCOORD = 750; //constant y coordinate of ship
+  public final int SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
   public boolean shooting = false; //whether the user is holding shoot
   
@@ -57,6 +57,6 @@ public class PlayerShip extends Rectangle {
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
     g.setColor(Color.white);
-    g.fillRectangle(x, y, WIDTH, HEIGHT);
+    g.fillRect(x, y, WIDTH, HEIGHT);
   }
 }
