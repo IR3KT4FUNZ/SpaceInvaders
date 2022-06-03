@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public GamePanel(){
     int x, y = 20; // coordinates for setting each alien position
   
-    ship = new PlayerShip(GAME_WIDTH/2 - ship.WIDTH / 2, PlayerShip.YCOORD);
+    ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, PlayerShip.YCOORD);
     start = new Menu(GAME_WIDTH, GAME_HEIGHT);
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
     
