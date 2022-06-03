@@ -68,6 +68,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   public void move(){
     ship.move();
+    for(int i = 0; i < 11; ++i){
+        for(int j = 0; j < 5; ++j){
+        	aliens[i][j].move();
+        }
+    }
   }
 
   public void checkCollision(){
@@ -100,6 +105,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
     
     //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
+    if(aliens[0][4].x >= GAME_WIDTH - Alien.ALIEN_WIDTH) {
+    	Alien.xspeed *= -1;
+    }
+    
+    if(aliens[0][0].x <= 0) {
+    	Alien.xspeed *= -1;
+    }
     
     //add check that if all aliens dead, then resets wave(i.e. make aliens[i][j].dead == false and reset all the x y positions to the original position)
     //not sure if that goes in the check collision method
