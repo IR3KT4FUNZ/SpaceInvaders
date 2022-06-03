@@ -27,12 +27,12 @@ public class Title{
   public void draw(Graphics g){
      g.setColor(Color.white);
      g.setFont(new Font("Consolas", Font.PLAIN, 100));
-     g.drawString("SPACE INVADERS", (int)(GAME_WIDTH*0.41), (int)(GAME_HEIGHT*0.4)); //setting location and text of title cards 
+     g.drawString("SPACE INVADERS", (int)(GAME_WIDTH*0.16), (int)(GAME_HEIGHT*0.4)); //setting location and text of title cards 
     
      g.setFont(new Font("Consolas", Font.PLAIN, 50));
-     g.drawString("Use WS and Space to play", (int)(GAME_WIDTH*0.27), (int)(GAME_HEIGHT*0.6));
+     g.drawString("Use WS and Space to play", (int)(GAME_WIDTH*0.20), (int)(GAME_HEIGHT*0.6));
     
      g.setFont(new Font("Consolas", Font.PLAIN, 50));
-     g.drawString("Press v to start", (int)(GAME_WIDTH*0.32), (int)(GAME_HEIGHT*0.8));
+     g.drawString("Press v to start", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.8));
   }
 }
