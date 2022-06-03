@@ -1,9 +1,9 @@
 import java.awt.*;
 
 public class House extends Rectangle {
-  public int width = 20; //width of the house
-  public int height = 16; //height of the house
-  public boolean[][] alive = 0; //array for squares of the house
+  public static int width = 20; //width of the house
+  public static int height = 16; //height of the house
+  public boolean[][] alive; //array for squares of the house
   
   //constructor, defines walls
   public House(int x, int y) {
@@ -22,7 +22,7 @@ public class House extends Rectangle {
       for (int j = 0; j < 8; j++) {
         if (alive[i][j]) {
           g.setColor(Color.red);
-          g.fillRectangle(x + i * 2, y + j * 2, 2, 2);
+          g.fillRecte(x + i * 2, y + j * 2, 2, 2);
         }
       }
     }
