@@ -2,7 +2,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Menu{
+public class Title{
 
   public static int GAME_WIDTH;//width of the window
   public static int GAME_HEIGHT;//height of the window
