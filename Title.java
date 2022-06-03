@@ -33,6 +33,6 @@ public class Title{
      g.drawString("Use WS and Space to play", (int)(GAME_WIDTH*0.27), (int)(GAME_HEIGHT*0.6));
     
      g.setFont(new Font("Consolas", Font.PLAIN, 50));
-     g.drawString("Press g to start", (int)(GAME_WIDTH*0.32), (int)(GAME_HEIGHT*0.8));
+     g.drawString("Press v to start", (int)(GAME_WIDTH*0.32), (int)(GAME_HEIGHT*0.8));
   }
 }
