@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       for(int j = 0; j < 5; ++j){
         //intialization of each alien object
         aliens[i][j] = new Alien(x, y);
+        x += 50;
       }
       
       y += 40; // next row of aliens
