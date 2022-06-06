@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Alien[][] aliens = new Alien[11][5];
   public PlayerShip ship;
   public Menu start;
-  public long startTime(); //when game starts, set starttime to that time
+  public long startTime; //when game starts, set starttime to that time
   public Score score;
   
   public GamePanel(){
