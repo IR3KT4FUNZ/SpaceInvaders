@@ -96,14 +96,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     //checks if projectile hits alien, then makes alien[i][j].dead = true, increase score
     for(int i = 0; i < 11; ++i){
         for(int j = 0; j < 5; ++j){
-        	/*
-          if(aliens[i][j].intersects(projectile)){ //change the projectile name to the name of the projectile object later
-            aliens[i][j].dead = true;
-            score.score += 100;
+          for (int k = 0; k < 5; k++) {
+        	  if(aliens[i][j].intersects(ship.bullets[k])){ //change the projectile name to the name of the projectile object later
+                 aliens[i][j].dead = true;
+                 score.score += 100;
+              }
           }
-          */
         }
-      }
+     }
       
     //checks if projectile hits house/wall
     
