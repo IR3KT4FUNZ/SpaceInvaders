@@ -126,11 +126,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     */
     
     if(aliens[0][4].x >= GAME_WIDTH - Alien.ALIEN_WIDTH) {
-    	Alien.xspeed = -1;
+    	Alien.xspeed *= -1;
     }
     
     if(aliens[0][0].x <= 0) {
-    	Alien.xspeed = -1;
+    	Alien.xspeed *= -1;
     }
     
     //add check that if all aliens dead, then resets wave(i.e. make aliens[i][j].dead == false and reset all the x y positions to the original position)
