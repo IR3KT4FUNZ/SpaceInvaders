@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
         x += 50;
       }
       
-      y += 40; // next row of aliens
+      y += 45; // next row of aliens
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -118,7 +118,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     //checks if at one second has passed, if so then moves alien(for staggered movement)
     
-    if(System.nanoTime() - startTime >= 1000000000) { // note to increase movement, just change the 1000000000 number to a smaller numbera  time goes on(figure that out later)
+    if(System.nanoTime() - startTime >= 500000000) { // note to increase movement, just change the 1000000000 number to a smaller numbera  time goes on(figure that out later)
     	if(direction) {
     		Alien.xspeed = 10;
     	}
