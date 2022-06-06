@@ -4,7 +4,7 @@ public class Projectile extends Rectangle {
 
   public int xVelocity; //horizontal velocity of projectile
   public int yVelocity; //vertical velocity of projectile
-  public static final int SIDELENGTH = 2; //dimension of square projectile
+  public static final int SIDELENGTH = 4; //dimension of square projectile
   
   //constructor creates projectile as a 2x2 square with velocity
   public Projectile(int x, int y, int xVel, int yVel) {
