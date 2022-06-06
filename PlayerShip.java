@@ -74,7 +74,7 @@ public class PlayerShip extends Rectangle {
       bulletUsed[i] = true;
       bullets[i].x = this.x + 9;
       bullets[i].y = this.y - 2;
-      bullets[i].setYVelocity = 10;
+      bullets[i].setYVelocity = -10;
     }
   }
   
