@@ -16,6 +16,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public static long startTime; //when game starts, set starttime to that time
   public Score score;
   public int counter = 1;
+  public boolean direction = true;
   
   public GamePanel(){
     int x, y = 20; // coordinates for setting each alien position
@@ -117,22 +118,29 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     
     //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
-    /*
-    if((System.nanoTime() - startTime) >= 1000000000 * counter) {
-    	counter += 5;
-    	Alien.xspeed = 1;
+    
+    if(System.nanoTime() - startTime >= 1000000000 * counter) {
+    	++counter;
+    	if(direction) {
+    		Alien.xspeed = 5;
+    	}
+    	else {
+    		Alien.xspeed = - 5;
+    	}
     }
     else {
     	Alien.xspeed = 0;
     }
-    */
+    
     
     if(aliens[0][4].x >= GAME_WIDTH - Alien.ALIEN_WIDTH) {
-    	Alien.xspeed *= -1;
+    	Alien.xspeed = -5;
+    	direction = false;
     }
     
     if(aliens[0][0].x <= 0) {
-    	Alien.xspeed *= -1;
+    	Alien.xspeed = 5;
+    	direction = true;
     }
     
     //add check that if all aliens dead, then resets wave(i.e. make aliens[i][j].dead == false and reset all the x y positions to the original position)
