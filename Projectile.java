@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Projectile extends Rectangle {
 
   public int xVelocity; //horizontal velocity of projectile
@@ -29,7 +31,7 @@ public class Projectile extends Rectangle {
   
   //draw the projectile onto the screen
   public void draw(Graphics g) {
-    g.setColor(Color.black);
-    g.fillRect(x, y, 2, 2);
+    g.setColor(Color.white);
+    g.fillRect(x, y, SIDELENGTH, SIDELENGTH);
   }
 } 
