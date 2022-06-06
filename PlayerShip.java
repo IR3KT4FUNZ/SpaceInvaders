@@ -11,11 +11,18 @@ public class PlayerShip extends Rectangle {
   public final int SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
   public boolean shooting = false; //whether the user is holding shoot
+  public long lastShot = -1000000000;
+  public Projectile[] bullets = new Projectile[5];
+  public boolean[] bulletUsed = new boolean[5];
   
   //constructor, use rectangle constructor
   public PlayerShip(int x, int y) {
     super(x, y, WIDTH, HEIGHT);
     velocity = 0;
+    Arrays.fill(bulletUsed, false);
+    for (int i = 0; i < 5; i++) {
+      bullets[i] = new Projectile(-10, -10, 0, 0);
+    }
   }
   
   //check for controls being pressed
@@ -30,6 +37,15 @@ public class PlayerShip extends Rectangle {
       shooting = true;
     }
   } 
+  
+  //find lowest unused bullet
+  public void getBullet() {
+    for (int i = 0; i < 5; i++) {
+      if (!bulletUsed) {
+        return i;
+      }
+    }
+  }
   
   //check for controls being released
   public void keyReleased(KeyEvent e) {
@@ -51,7 +67,15 @@ public class PlayerShip extends Rectangle {
   
   //set projectile velocity and starting position
   public void shoot() {
-    
+    long temp = System.nanoTime();
+    if (temp - lastShot > 1000000000) {
+      lastShot = temp;
+      int i = getBullet();
+      bulletUsed[i] = true;
+      bullets[i].x = this.x + 9;
+      bullets[i].y = this.y - 2;
+      bullets[i].setYVelocity = 10;
+    }
   }
   
   //draw spaceship onto screen(make image)
