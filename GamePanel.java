@@ -10,28 +10,27 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Thread gameThread;
   public Image image;
   public Graphics graphics;
-  public Alien[][] aliens = new Alien[11][5];
+  public Alien[][] aliens = new Alien[5][11];
   public PlayerShip ship;
   public Title start;
   public static long startTime; //when game starts, set starttime to that time
   public Score score;
-  public int counter = 1;
   public boolean direction = true;
   
   public GamePanel(){
-    int x, y = 20; // coordinates for setting each alien position
+    int x, y = 40; // coordinates for setting each alien position
   
     ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, 550);
     start = new Title(GAME_WIDTH, GAME_HEIGHT);
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
     
-    for(int i = 0; i < 11; ++i){
+    for(int i = 0; i < 5; ++i){
       x = 100; // change to the first alien position later(make it so its centered)
     
-      for(int j = 0; j < 5; ++j){
+      for(int j = 0; j < 11; ++j){
         //intialization of each alien object
         aliens[i][j] = new Alien(x, y);
-        x += 100;
+        x += 50;
       }
       
       y += 40; // next row of aliens
@@ -57,8 +56,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	start.draw(g);
     }
     else{
-      for(int i = 0; i < 11; ++i){
-        for(int j = 0; j < 5; ++j){
+      for(int i = 0; i < 5; ++i){
+        for(int j = 0; j < 11; ++j){
           if(aliens[i][j].dead == false){
             aliens[i][j].draw(g);
           }
@@ -73,8 +72,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   public void move(){
     ship.move();
-    for(int i = 0; i < 11; ++i){
-        for(int j = 0; j < 5; ++j){
+    for(int i = 0; i < 5; ++i){
+        for(int j = 0; j < 11; ++j){
         	aliens[i][j].move();
         }
     }
@@ -95,8 +94,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   
   
     //checks if projectile hits alien, then makes alien[i][j].dead = true, increase score
-    for(int i = 0; i < 11; ++i){
-        for(int j = 0; j < 5; ++j){
+    for(int i = 0; i < 5; ++i){
+        for(int j = 0; j < 11; ++j){
           for (int k = 0; k < 5; k++) {
         	  if(aliens[i][j].intersects(ship.bullets[k]) && aliens[i][j].dead == false){ //change the projectile name to the name of the projectile object later
                  aliens[i][j].dead = true;
@@ -117,29 +116,32 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     //}
     
     
-    //checks if farthest alien to one side hits wall, then reverses the x direction and moves all aliens down, as aliens reach more row, speed increases
+    //checks if at one second has passed, if so then moves alien(for staggered movement)
     
-    if(System.nanoTime() - startTime >= 1000000000 * counter) {
-    	++counter;
+    if(System.nanoTime() - startTime >= 1000000000) { // note to increase movement, just change the 1000000000 number to a smaller numbera  time goes on(figure that out later)
     	if(direction) {
-    		Alien.xspeed = 5;
+    		Alien.xspeed = 10;
     	}
     	else {
-    		Alien.xspeed = - 5;
+    		Alien.xspeed = -10;
     	}
+    	startTime = System.nanoTime();
     }
     else {
     	Alien.xspeed = 0;
     }
     
     
-    if(aliens[0][4].x >= GAME_WIDTH - Alien.ALIEN_WIDTH) {
-    	Alien.xspeed = -5;
+    //checks if farthest alien to one side hits wall, then reverses the x direction
+    //add thing that makes all aliens move down as well
+    
+    if(aliens[0][10].x >= GAME_WIDTH - Alien.ALIEN_WIDTH) {
+    	Alien.xspeed = -10;
     	direction = false;
     }
     
     if(aliens[0][0].x <= 0) {
-    	Alien.xspeed = 5;
+    	Alien.xspeed = 10;
     	direction = true;
     }
     
@@ -170,7 +172,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   public void keyPressed(KeyEvent e){
     if(Title.check == false) { // checks if title has been displayed yet or not
-    	start.keyPressed(e);
+      start.keyPressed(e);
     }
     else{
       ship.keyPressed(e);
