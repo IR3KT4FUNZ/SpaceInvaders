@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
@@ -18,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public boolean direction = true;
   public double counter = 1;
   
-  public GamePanel(){
+  public GamePanel() throws IOException{
     int x, y = 40; // coordinates for setting each alien position
   
     ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, 550);
@@ -47,12 +49,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public void paint(Graphics g){
     image = createImage(GAME_WIDTH, GAME_HEIGHT);
     graphics = image.getGraphics();
-    draw(graphics);
+    try {
+		draw(graphics);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     g.drawImage(image, 0, 0, this);
 
   }
 
-  public void draw(Graphics g){
+  public void draw(Graphics g) throws IOException{
     if(Title.check == false) { // checks if title has been displayed yet or not
     	start.draw(g);
     }
@@ -119,7 +126,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     //checks if at one second has passed, if so then moves alien(for staggered movement)
     
-    if(System.nanoTime() - startTime >= 500000000/counter) { // note to increase movement, just change the 1000000000 number to a smaller numbera  time goes on(figure that out later)
+    if(System.nanoTime() - startTime >= 500000000/counter) { // note to increase movement, just change the 1000000000 number to a smaller number as time goes on
     	if(direction) {
     		Alien.xspeed = 10;
     	}
