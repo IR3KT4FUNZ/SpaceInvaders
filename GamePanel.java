@@ -16,6 +16,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public static long startTime; //when game starts, set starttime to that time
   public Score score;
   public boolean direction = true;
+  public double counter = 1;
   
   public GamePanel(){
     int x, y = 40; // coordinates for setting each alien position
@@ -118,7 +119,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     //checks if at one second has passed, if so then moves alien(for staggered movement)
     
-    if(System.nanoTime() - startTime >= 500000000) { // note to increase movement, just change the 1000000000 number to a smaller numbera  time goes on(figure that out later)
+    if(System.nanoTime() - startTime >= 500000000/counter) { // note to increase movement, just change the 1000000000 number to a smaller numbera  time goes on(figure that out later)
     	if(direction) {
     		Alien.xspeed = 10;
     	}
@@ -137,11 +138,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     if(aliens[0][10].x >= GAME_WIDTH - Alien.ALIEN_WIDTH) {
     	Alien.xspeed = -10;
+    	counter += 0.5;
     	direction = false;
     }
     
     if(aliens[0][0].x <= 0) {
     	Alien.xspeed = 10;
+    	counter += 0.5;
     	direction = true;
     }
     
