@@ -14,6 +14,19 @@ public class House extends Rectangle {
         alive[i][j] = true;
       }
     }
+    alive[0][0] = false;
+    alive[0][1] = false;
+    alive[1][0] = false;
+    alive[8][0] = false;
+    alive[9][0] = false;
+    alive[9][1] = false;
+    alive[4][4] = false;
+    alive[5][4] = false;
+    for (int i = 3; i <= 6; i++) {
+      for (int j = 5; j <= 7; j++) {
+        alive[i][j] = false; 
+      }
+    }
   }
   
   //display the alive parts of the defensive house
