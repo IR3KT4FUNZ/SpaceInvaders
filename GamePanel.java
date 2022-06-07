@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
@@ -16,8 +15,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public PlayerShip ship;
   public Title start;
   public static long startTime; //when game starts, set starttime to that time
+  public static long startTime2;
   public Score score;
   public boolean direction = true;
+  public boolean downwardmove = false;
   public double counter = 1;
   
   public GamePanel() throws IOException{
@@ -33,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       for(int j = 0; j < 11; ++j){
         //intialization of each alien object
         aliens[i][j] = new Alien(x, y);
-        x += 50;
+        x += 40;
       }
       
       y += 45; // next row of aliens
@@ -147,12 +148,33 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	Alien.xspeed = -10;
     	counter += 0.5;
     	direction = false;
+    	downwardmove = true;
+    	startTime2 = System.nanoTime();
+    	Alien.yspeed = 20;
     }
     
     if(aliens[0][0].x <= 0) {
     	Alien.xspeed = 10;
     	counter += 0.5;
     	direction = true;
+    	downwardmove = true;
+    	startTime2 = System.nanoTime();
+    	Alien.yspeed = 20;
+    	/*
+    	for(int i = 0; i < 5; ++i){
+    	  for(int j = 0; j < 11; ++j){
+    		  aliens[i][j].y += 10;
+    	  }
+    	}
+    	*/
+    }
+    
+    //supposed to make alien move down a bit test this more
+    if(downwardmove) {
+    	if(System.nanoTime() - startTime2 >= 5000) {
+    		Alien.yspeed = 0;
+    		downwardmove = false;
+    	}
     }
     
     //add check that if all aliens dead, then resets wave(i.e. make aliens[i][j].dead == false and reset all the x y positions to the original position)
