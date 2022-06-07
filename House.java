@@ -22,7 +22,7 @@ public class House extends Rectangle {
       for (int j = 0; j < 8; j++) {
         if (alive[i][j]) {
           g.setColor(Color.red);
-          g.fillRecte(x + i * 2, y + j * 2, 2, 2);
+          g.fillRectangle(x + i * 2, y + j * 2, 2, 2);
         }
       }
     }
