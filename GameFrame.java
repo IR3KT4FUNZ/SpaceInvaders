@@ -5,13 +5,15 @@ Runs the constructor in GamePanel class
 */ 
 
 import java.awt.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class GameFrame extends JFrame{
 
   GamePanel panel;
 
-  public GameFrame(){
+  public GameFrame() throws IOException{
     panel = new GamePanel(); //run GamePanel constructor
     this.add(panel);
     this.setTitle("Space Invaders"); //set title for frame
