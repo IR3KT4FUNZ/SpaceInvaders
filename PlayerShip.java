@@ -1,12 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
+import javax.swing.*;
+import javax.imageio.*;
+import java.io.*;
 
 //Player controlled ship for space invaders
 //Eric, Elliot, 05/31/2022
 
 public class PlayerShip extends Rectangle {
-  public static final int HEIGHT = 20; //height of ship
-  public static final int WIDTH = 20; //width of ship
+  public static final int HEIGHT = 30; //height of ship
+  public static final int WIDTH = 30; //width of ship
   public static final int YCOORD = 700; //constant y coordinate of ship
   public final int SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
@@ -14,15 +18,17 @@ public class PlayerShip extends Rectangle {
   public long lastShot = -1000000000;
   public Projectile[] bullets = new Projectile[5];
   public boolean[] bulletUsed = new boolean[5];
+  public Image img;
   
   //constructor, use rectangle constructor
-  public PlayerShip(int x, int y) {
+  public PlayerShip(int x, int y) throws IOException {
     super(x, y, WIDTH, HEIGHT);
     velocity = 0;
     Arrays.fill(bulletUsed, false);
     for (int i = 0; i < 5; i++) {
       bullets[i] = new Projectile(-10, -10, 0, 0);
     }
+    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship.jpg"));
   }
   
   //check for controls being pressed
@@ -35,16 +41,18 @@ public class PlayerShip extends Rectangle {
     }
     if (e.getKeyChar() == 'c') {
       shooting = true;
+      shoot();
     }
   } 
   
   //find lowest unused bullet
-  public void getBullet() {
+  public int getBullet() {
     for (int i = 0; i < 5; i++) {
-      if (!bulletUsed) {
+      if (!bulletUsed[i]) {
         return i;
       }
     }
+    return 0;
   }
   
   //check for controls being released
@@ -74,13 +82,14 @@ public class PlayerShip extends Rectangle {
       bulletUsed[i] = true;
       bullets[i].x = this.x + 9;
       bullets[i].y = this.y - 2;
-      bullets[i].setYVelocity = -10;
+      bullets[i].setYVelocity(-10);
     }
   }
   
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
     g.setColor(Color.white);
-    g.fillRect(x, y, WIDTH, HEIGHT);
+    //g.fillRect(x, y, WIDTH, HEIGHT);
+    g.drawImage(img, x, y, 30, 30, null);
   }
 }
