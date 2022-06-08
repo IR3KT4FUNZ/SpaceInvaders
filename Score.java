@@ -18,7 +18,7 @@ public class Score{
   //updates the current score and draws it to the screen
   public void draw(Graphics g){
     g.setColor(Color.white);
-    g.setFont(new Font("Consolas", Font.PLAIN, 60));
-    g.drawString(String.valueOf(score), (int)(GAME_WIDTH*0.01), (int)(GAME_HEIGHT*0.2)); //setting location of score to be the top left corner
+    g.setFont(new Font("Space Invaders", Font.PLAIN, 20));
+    g.drawString(String.valueOf(score), (int)(GAME_WIDTH*0.01), (int)(GAME_HEIGHT*0.05)); //setting location of score to be the top left corner
   }
 }
