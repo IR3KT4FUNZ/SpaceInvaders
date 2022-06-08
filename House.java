@@ -9,8 +9,8 @@ public class House extends Rectangle {
   public House(int x, int y) {
     super(x, y, width, height);
     alive = new boolean[15][12];
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < 15; i++) {
+      for (int j = 0; j < 12; j++) {
         alive[i][j] = true;
       }
     }
@@ -42,7 +42,7 @@ public class House extends Rectangle {
       for (int j = 0; j < 12; j++) {
         if (alive[i][j]) {
           g.setColor(Color.red);
-          g.fillRectangle(x + i * 4, y + j * 4, 4, 4);
+          g.fillRect(x + i * 4, y + j * 4, 4, 4);
         }
       }
     }
