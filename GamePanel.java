@@ -150,7 +150,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = false;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 20;
+    	Alien.yspeed = 40;
     }
     
     if(aliens[0][0].x <= 0) {
@@ -159,7 +159,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = true;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 20;
+    	Alien.yspeed = 40;
     	/*
     	for(int i = 0; i < 5; ++i){
     	  for(int j = 0; j < 11; ++j){
