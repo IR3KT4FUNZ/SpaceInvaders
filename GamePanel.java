@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public boolean direction = true;
   public boolean downwardmove = false;
   public double counter = 1;
+  public House[] houses = new House[3];
   
   public GamePanel() throws IOException{
     int x, y = 40; // coordinates for setting each alien position
@@ -38,6 +39,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       }
       
       y += 45; // next row of aliens
+      houses[0] = new House(50, 450);
+      houses[2] = new House(890, 450);
+      houses[1] = new House(470, 450);
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
