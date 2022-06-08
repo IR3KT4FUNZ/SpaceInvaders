@@ -76,6 +76,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       for (int i = 0; i < 5; i++) {
     	  ship.bullets[i].draw(g);
       }
+      score.draw(g);
     }
   }
 
