@@ -76,7 +76,7 @@ public class PlayerShip extends Rectangle {
   //set projectile velocity and starting position
   public void shoot() {
     long temp = System.nanoTime();
-    if (temp - lastShot > 1000000000) {
+    if (temp - lastShot > 900000000) {
       lastShot = temp;
       int i = getBullet();
       bulletUsed[i] = true;
