@@ -20,14 +20,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public boolean direction = true;
   public boolean downwardmove = false;
   public double counter = 1;
+  public boolean alldead = true;
+  public int x, y; // coordinates for setting each alien position
   public House[] houses = new House[3];
   
   public GamePanel() throws IOException{
-    int x, y = 40; // coordinates for setting each alien position
   
     ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, 550);
     start = new Title(GAME_WIDTH, GAME_HEIGHT);
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
+    
+    y = 40;
     
     for(int i = 0; i < 5; ++i){
       x = 100; // change to the first alien position later(make it so its centered)
@@ -81,6 +84,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	  ship.bullets[i].draw(g);
       }
       score.draw(g);
+      for (int i = 0; i < 3; i++) {
+    	  houses[i].draw(g);
+      }
     }
   }
 
@@ -106,7 +112,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       ship.x = GAME_WIDTH - PlayerShip.WIDTH;
     }
   
-  
+    alldead = true;
+    
     //checks if projectile hits alien, then makes alien[i][j].dead = true, increase score
     for(int i = 0; i < 5; ++i){
         for(int j = 0; j < 11; ++j){
@@ -117,9 +124,33 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
                  ship.bulletUsed[k] = false;
                  score.score += 100;
               }
+        	  
+        	  if(aliens[i][j].dead == false) {
+        		  alldead = false;
+        	  }
           }
         }
       }
+    
+    if(alldead == true) {
+       y = 40;
+    	
+       for(int i = 0; i < 5; ++i){
+    	 x = 100; // change to the first alien position later(make it so its centered)
+    	    
+    	 for(int j = 0; j < 11; ++j){
+    	 //intialization of each alien object
+    	    aliens[i][j].x = x;
+    	    aliens[i][j].y = y;
+    	    x += 40;
+    	    aliens[i][j].dead = false;
+    	 }
+    	      
+    	 y += 45; // next row of aliens
+       }
+       
+       counter = 1;
+    }
       
     //checks if projectile hits house/wall
     
