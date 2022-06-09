@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
@@ -23,12 +26,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public boolean alldead = true;
   public int x, y; // coordinates for setting each alien position
   public House[] houses = new House[3];
+  public Background back;
   
   public GamePanel() throws IOException{
   
     ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, 550);
     start = new Title(GAME_WIDTH, GAME_HEIGHT);
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
+    back = new Background(GAME_WIDTH, GAME_HEIGHT);
     
     y = 40;
     
@@ -68,6 +73,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void draw(Graphics g) throws IOException{
+	back.draw(g);
     if(Title.check == false) { // checks if title has been displayed yet or not
     	start.draw(g);
     }
