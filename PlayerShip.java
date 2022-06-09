@@ -28,7 +28,7 @@ public class PlayerShip extends Rectangle {
     for (int i = 0; i < 5; i++) {
       bullets[i] = new Projectile(-10, -10, 0, 0);
     }
-    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship.jpg"));
+    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship2.png"));
   }
   
   //check for controls being pressed
@@ -90,6 +90,6 @@ public class PlayerShip extends Rectangle {
   public void draw(Graphics g) {
     g.setColor(Color.white);
     //g.fillRect(x, y, WIDTH, HEIGHT);
-    g.drawImage(img, x, y, 30, 30, null);
+    g.drawImage(img, x, y, 40, 40, null);
   }
 }
