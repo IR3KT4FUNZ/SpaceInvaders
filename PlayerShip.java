@@ -9,8 +9,8 @@ import java.io.*;
 //Eric, Elliot, 05/31/2022
 
 public class PlayerShip extends Rectangle {
-  public static final int HEIGHT = 30; //height of ship
-  public static final int WIDTH = 30; //width of ship
+  public static final int HEIGHT = 40; //height of ship
+  public static final int WIDTH = 40; //width of ship
   public static final int YCOORD = 700; //constant y coordinate of ship
   public final int SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
