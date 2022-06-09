@@ -43,8 +43,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       
       y += 45; // next row of aliens
       houses[0] = new House(50, 450);
-      houses[2] = new House(890, 450);
       houses[1] = new House(470, 450);
+      houses[2] = new House(890, 450);
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -112,7 +112,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       ship.x = GAME_WIDTH - PlayerShip.WIDTH;
     }
   
-    alldead = true;
+    alldead = true; // checks if all aliens have been killed
     
     //checks if projectile hits alien, then makes alien[i][j].dead = true, increase score
     for(int i = 0; i < 5; ++i){
@@ -126,20 +126,20 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
               }
         	  
         	  if(aliens[i][j].dead == false) {
-        		  alldead = false;
+        		  alldead = false; // if any alien is alive then sets to false
         	  }
           }
         }
       }
     
-    if(alldead == true) {
+    if(alldead == true) { // if all aliens are dead, resets wave of aliens
        y = 40;
     	
        for(int i = 0; i < 5; ++i){
     	 x = 100; // change to the first alien position later(make it so its centered)
     	    
     	 for(int j = 0; j < 11; ++j){
-    	 //intialization of each alien object
+    	 //resets each alien object
     	    aliens[i][j].x = x;
     	    aliens[i][j].y = y;
     	    x += 40;
@@ -149,10 +149,35 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	 y += 45; // next row of aliens
        }
        
-       counter = 1;
+       counter = 1; // resets alien movement timing
     }
       
-    //checks if projectile hits house/wall
+    //checks if projectile hits house/wall, buggy please fix
+    for(int i = 0; i < 3; ++i) {
+    	for (int j = 0; j < 15; j++) {
+    	   for (int k = 0; k < 12; k++) {
+    		   for(int l = 0; l < 5; ++l) {
+    			   if(ship.bullets[l].x >= 50 + j * 4 && ship.bullets[l].x <= 50 + j * 4 + 4 && ship.bullets[l].y >= 450 + k * 4 && ship.bullets[l].y <= 450 + k * 4 + 4 && houses[0].alive[j][k]) {
+    				   houses[0].alive[j][k] = false;
+    				   ship.bullets[l].x = -10;
+    				   ship.bulletUsed[l] = false;
+    			   }
+    			   
+    			   if(ship.bullets[l].x >= 470 + j * 4 && ship.bullets[l].x <= 470 + j * 4 + 4 && ship.bullets[l].y >= 450 + k * 4 && ship.bullets[l].y <= 450 + k * 4 + 4 && houses[1].alive[j][k]) {
+    				   houses[1].alive[j][k] = false;
+    				   ship.bullets[l].x = -10;
+    				   ship.bulletUsed[l] = false;
+    			   }
+    			   
+    			   if(ship.bullets[l].x >= 890 + j * 4 && ship.bullets[l].x <= 890 + j * 4 + 4 && ship.bullets[l].y >= 450 + k * 4 && ship.bullets[l].y <= 450 + k * 4 + 4 && houses[2].alive[j][k]) {
+    				   houses[2].alive[j][k] = false;
+    				   ship.bullets[l].x = -10;
+    				   ship.bulletUsed[l] = false;
+    			   }
+    		   }
+    	   }
+    	}
+    }
     
     //checks if projectile hits player ship
     ///if(projectile.intersects(ship)){ //change the projectile name to the name of the projectile object later
