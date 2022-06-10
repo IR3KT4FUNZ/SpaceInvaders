@@ -159,30 +159,28 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
       
     //checks if projectile hits house/wall, buggy please fix
-    for(int i = 0; i < 3; ++i) {
-    	for (int j = 0; j < 15; j++) {
-    	   for (int k = 0; k < 12; k++) {
-    		   for(int l = 0; l < 5; ++l) {
-    			   if(ship.bullets[l].x >= 50 + j * 4 && ship.bullets[l].x <= 50 + j * 4 + 4 && ship.bullets[l].y >= 450 + k * 4 && ship.bullets[l].y <= 450 + k * 4 + 4 && houses[0].alive[j][k]) {
-    				   houses[0].alive[j][k] = false;
-    				   ship.bullets[l].x = -10;
-    				   ship.bulletUsed[l] = false;
-    			   }
+    for (int i = 0; i < 15; i++) {
+       for (int j = 0; j < 12; j++) {
+          for(int k = 0; k < 5; ++k) {
+    		if(ship.bullets[k].x >= 50 + i * 4 && ship.bullets[k].x <= 50 + i * 4 + 4 && ship.bullets[k].y >= 450 + j * 4 && ship.bullets[k].y <= 450 + j * 4 + 4 && houses[0].alive[i][j]) {
+    		   houses[0].alive[i][j] = false;
+    		   ship.bullets[k].x = -10;
+    		   ship.bulletUsed[k] = false;
+    		}
     			   
-    			   if(ship.bullets[l].x >= 470 + j * 4 && ship.bullets[l].x <= 470 + j * 4 + 4 && ship.bullets[l].y >= 450 + k * 4 && ship.bullets[l].y <= 450 + k * 4 + 4 && houses[1].alive[j][k]) {
-    				   houses[1].alive[j][k] = false;
-    				   ship.bullets[l].x = -10;
-    				   ship.bulletUsed[l] = false;
-    			   }
-    			   
-    			   if(ship.bullets[l].x >= 890 + j * 4 && ship.bullets[l].x <= 890 + j * 4 + 4 && ship.bullets[l].y >= 450 + k * 4 && ship.bullets[l].y <= 450 + k * 4 + 4 && houses[2].alive[j][k]) {
-    				   houses[2].alive[j][k] = false;
-    				   ship.bullets[l].x = -10;
-    				   ship.bulletUsed[l] = false;
-    			   }
-    		   }
-    	   }
-    	}
+    		if(ship.bullets[k].x >= 470 + i * 4 && ship.bullets[k].x <= 470 + i * 4 + 4 && ship.bullets[k].y >= 450 + j * 4 && ship.bullets[k].y <= 450 + j * 4 + 4 && houses[1].alive[i][j]) {
+     		   houses[1].alive[i][j] = false;
+     		   ship.bullets[k].x = -10;
+     		   ship.bulletUsed[k] = false;
+     		}
+    		
+    		if(ship.bullets[k].x >= 890 + i * 4 && ship.bullets[k].x <= 890 + i * 4 + 4 && ship.bullets[k].y >= 450 + j * 4 && ship.bullets[k].y <= 450 + j * 4 + 4 && houses[2].alive[i][j]) {
+     		   houses[2].alive[i][j] = false;
+     		   ship.bullets[k].x = -10;
+     		   ship.bulletUsed[k] = false;
+     		}
+    	  }
+       }
     }
     
     //checks if projectile hits player ship
