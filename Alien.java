@@ -34,8 +34,7 @@ public class Alien extends Rectangle{
   }
   
   public void shoot(){
-    //calls upon projectile object to move to alien position 
-    //also changes projectile y velocity to go down
+    
   }
 
   //draw the obstacle to the screen (called from GamePanel frequently)
