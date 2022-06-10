@@ -96,6 +96,19 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
   }
 
+  //pick random aliens(changes start)
+  public int random() {
+    return ((int) (Math.random() * 55.0));
+  }
+  
+  public void alienShots() {
+    int temp = random();
+    for (int i = 0; i < 4; i++) {
+	aliens[temp / 11][temp % 11].shoot();
+    }
+  }
+  //insert end
+	
   public void move(){
     ship.move();
     for(int i = 0; i < 5; ++i){
