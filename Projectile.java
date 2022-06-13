@@ -36,7 +36,7 @@ public class Projectile extends Rectangle {
   //draw the projectile onto the screen
   public void draw(Graphics g) {
     g.setColor(Color.white);
-    if (((int) (y / 100)) % 2 == 0) {
+    if (((int) (y / 40)) % 2 == 0) {
       g.drawImage(bullet1, x, y, 27, 20, null);
     } else {
       g.drawImage(bullet2, x, y, 27, 20, null);
