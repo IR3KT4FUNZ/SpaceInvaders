@@ -33,10 +33,10 @@ public class Alien extends Rectangle{
     y = y + yspeed;
   }
   
-  public void shoot(int i){
-    panel.alienBullets[i].x = this.x + 13;
-    panel.alienBullets[i].y = this.x + 20;
-    panel.alienBullets[i].setXVel() = 8;
+  public void shoot(int i, Projectile[] alienBullets) {
+    alienBullets[i].x = this.x + 13;
+    alienBullets[i].y = this.x + 20;
+    alienBullets[i].setYVelocity(8);
   }
 
   //draw the obstacle to the screen (called from GamePanel frequently)
