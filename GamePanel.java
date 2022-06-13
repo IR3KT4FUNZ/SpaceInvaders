@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Background back;
   public Projectile[] alienBullets = new Projectile[5];
   public long prevAlienShot;
+  public final long TIMEDIF = 2500000000l;
   
   public GamePanel() throws IOException{
   
@@ -54,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       houses[2] = new House(815, 425);
     }
     for (int i = 0; i < 5; i++) {
-      alientBullets[i] = new Projectile(-10, -10, 0, 0);
+      alienBullets[i] = new Projectile(-10, -10, 0, 0);
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -109,7 +110,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public void alienShots() {
     int temp = random();
     for (int i = 0; i < 5; i++) {
-	aliens[temp / 11][temp % 11].shoot(i);
+	aliens[temp / 11][temp % 11].shoot(i, alienBullets);
     }
   }
   //insert end
@@ -124,10 +125,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
     for (int i = 0; i < 5; i++) {
   	  ship.bullets[i].move();
-	  panel.alienBullets[i].move();
+	  alienBullets[i].move();
     }
     temp = System.nanoTime();
-    if (temp - prevAlienShot > 2500000000) {
+    if (temp - prevAlienShot > TIMEDIF) {
       prevAlienShot = temp;
       alienShots();
     }
