@@ -47,9 +47,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       }
       
       y += 45; // next row of aliens
-      houses[0] = new House(65, 400);
-      houses[1] = new House(440, 400);
-      houses[2] = new House(815, 400);
+      houses[0] = new House(65, 425);
+      houses[1] = new House(440, 425);
+      houses[2] = new House(815, 425);
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -171,23 +171,23 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
        counter = 1; // resets alien movement timing
     }
       
-    //checks if projectile hits house/wall, buggy please fix
+    //checks if projectile hits house/wall
     for (int i = 0; i < 15; i++) {
        for (int j = 0; j < 12; j++) {
           for(int k = 0; k < 5; ++k) {
-    		if(ship.bullets[k].x + 4 >= 65 + i * 8 && ship.bullets[k].x + 4 <= 65 + i * 8 + 8 && ship.bullets[k].y >= 400 + j * 8 && ship.bullets[k].y <= 400 + j * 8 + 8 && houses[0].alive[i][j]) {
+    		if(ship.bullets[k].x + 4 >= 65 + i * 8 && ship.bullets[k].x + 4 <= 65 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[0].alive[i][j]) {
     		   houses[0].alive[i][j] = false;
     		   ship.bullets[k].x = -10;
     		   ship.bulletUsed[k] = false;
     		}
     			   
-    		if(ship.bullets[k].x + 4 >= 440 + i * 8 && ship.bullets[k].x + 4 <= 440 + i * 8 + 8 && ship.bullets[k].y >= 400 + j * 8 && ship.bullets[k].y <= 400 + j * 8 + 8 && houses[1].alive[i][j]) {
+    		if(ship.bullets[k].x + 4 >= 440 + i * 8 && ship.bullets[k].x + 4 <= 440 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[1].alive[i][j]) {
      		   houses[1].alive[i][j] = false;
      		   ship.bullets[k].x = -10;
      		   ship.bulletUsed[k] = false;
      		}
     		
-    		if(ship.bullets[k].x + 4 >= 815 + i * 8 && ship.bullets[k].x + 4 <= 815 + i * 8 + 8 && ship.bullets[k].y >= 400 + j * 8 && ship.bullets[k].y <= 400 + j * 8 + 8 && houses[2].alive[i][j]) {
+    		if(ship.bullets[k].x + 4 >= 815 + i * 8 && ship.bullets[k].x + 4 <= 815 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[2].alive[i][j]) {
      		   houses[2].alive[i][j] = false;
      		   ship.bullets[k].x = -10;
      		   ship.bulletUsed[k] = false;
@@ -227,7 +227,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = false;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 40;
+    	Alien.yspeed = 30;
     }
     
     if(aliens[0][0].x <= 0) {
@@ -236,7 +236,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = true;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 40;
+    	Alien.yspeed = 30;
     	/*
     	for(int i = 0; i < 5; ++i){
     	  for(int j = 0; j < 11; ++j){
