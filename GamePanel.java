@@ -122,6 +122,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
     for (int i = 0; i < 5; i++) {
   	  ship.bullets[i].move();
+	  panel.alienBullets[i].move();
     }
   }
 
