@@ -99,6 +99,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       for (int i = 0; i < 3; i++) {
     	  houses[i].draw(g);
       }
+      for(int i = 0; i < 5; ++i) {
+    	  alienBullets[i].draw(g);
+      }
     }
   }
   
@@ -108,10 +111,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
   
   public void alienShots() {
-    int temp = random();
-    for (int i = 0; i < 5; i++) {
-	aliens[temp / 11][temp % 11].shoot(i, alienBullets);
-    }
+	  int temp = random(), counter = 0;
+	  while(counter != 5) {
+	   	if(aliens[temp / 11][temp % 11].dead == false) {
+	   		aliens[temp / 11][temp % 11].shoot(counter, alienBullets);
+	   		++counter;
+	   	}
+	   	temp = random();
+	  }
   }
   //insert end
 
@@ -205,11 +212,33 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
      		   ship.bullets[k].x = -10;
      		   ship.bulletUsed[k] = false;
      		}
+    		
+    		if(alienBullets[k].x + 4 >= 65 + i * 8 && alienBullets[k].x + 4 <= 65 + i * 8 + 8 && alienBullets[k].y >= 425 + j * 8 && alienBullets[k].y <= 425 + j * 8 + 8 && houses[0].alive[i][j]) {
+     		   houses[0].alive[i][j] = false;
+     		   alienBullets[k].x = -10;
+     		}
+     			   
+    		if(alienBullets[k].x + 4 >= 440 + i * 8 && alienBullets[k].x + 4 <= 440 + i * 8 + 8 && alienBullets[k].y >= 425 + j * 8 && alienBullets[k].y <= 425 + j * 8 + 8 && houses[1].alive[i][j]) {
+      		   houses[1].alive[i][j] = false;
+      		   alienBullets[k].x = -10;
+      		}
+     		
+    		if(alienBullets[k].x + 4 >= 815 + i * 8 && alienBullets[k].x + 4 <= 815 + i * 8 + 8 && alienBullets[k].y >= 425 + j * 8 && alienBullets[k].y <= 425 + j * 8 + 8 && houses[2].alive[i][j]) {
+      		   houses[2].alive[i][j] = false;
+      		   alienBullets[k].x = -10;
+      		}
     	  }
        }
     }
     
     //checks if projectile hits player ship
+    for(int i = 0; i < 5; ++i) {
+    	if(ship.intersects(alienBullets[i])) {
+    		//implement lives system here
+    		score.score -= 1000;
+    	}
+    }
+    
     ///if(projectile.intersects(ship)){ //change the projectile name to the name of the projectile object later
        //add code here that decreases number of lives
        //also add code that if number of lives = 0, then display the end screen and stop game
@@ -240,7 +269,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = false;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 30;
+    	Alien.yspeed = 20;
     }
     
     if(aliens[0][0].x <= 0) {
@@ -249,7 +278,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = true;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 30;
+    	Alien.yspeed = 20;
     	/*
     	for(int i = 0; i < 5; ++i){
     	  for(int j = 0; j < 11; ++j){
