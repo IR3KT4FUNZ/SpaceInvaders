@@ -80,7 +80,7 @@ public class PlayerShip extends Rectangle {
       lastShot = temp;
       int i = getBullet();
       bulletUsed[i] = true;
-      bullets[i].x = this.x + 9;
+      bullets[i].x = this.x + 15;
       bullets[i].y = this.y - 2;
       bullets[i].setYVelocity(-10);
     }
