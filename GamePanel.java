@@ -236,6 +236,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	if(ship.intersects(alienBullets[i])) {
     		//implement lives system here
     		score.score -= 1000;
+		alienBullets[i].x = -10;
     	}
     }
     
