@@ -32,6 +32,12 @@ public class Alien extends Rectangle{
     x = x + xspeed;
     y = y + yspeed;
   }
+  
+  public void shoot(int i, Projectile[] alienBullets) {
+    alienBullets[i].x = this.x + 13;
+    alienBullets[i].y = this.y + 20;
+    alienBullets[i].setYVelocity(8);
+  }
 
   //draw the obstacle to the screen (called from GamePanel frequently)
   //Replace ball with image of alien later?
