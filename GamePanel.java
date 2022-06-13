@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public int x, y; // coordinates for setting each alien position
   public House[] houses = new House[3];
   public Background back;
+  public Projectile[] alienBullets = new Projectile[5];
   
   public GamePanel() throws IOException{
   
@@ -50,6 +51,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       houses[0] = new House(65, 425);
       houses[1] = new House(440, 425);
       houses[2] = new House(815, 425);
+    }
+    for (int i = 0; i < 5; i++) {
+      alientBullets[i] = new Projectile(-10, -10, 0, 0);
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -103,8 +107,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   
   public void alienShots() {
     int temp = random();
-    for (int i = 0; i < 4; i++) {
-	aliens[temp / 11][temp % 11].shoot();
+    for (int i = 0; i < 5; i++) {
+	aliens[temp / 11][temp % 11].shoot(i);
     }
   }
   //insert end
