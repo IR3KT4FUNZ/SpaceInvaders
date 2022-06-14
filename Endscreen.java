@@ -2,16 +2,16 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class EndScreen {
+public class Endscreen {
 
   public static int GAME_WIDTH;//width of the window
   public static int GAME_HEIGHT;//height of the window
   public static boolean display = false; //whether screen is displaying
 
   //constructor establishes dimensions of game window
-  public EndScreen(int w, int h){
-    Title.GAME_WIDTH = w;
-    Title.GAME_HEIGHT = h;
+  public Endscreen(int w, int h){
+    this.GAME_WIDTH = w;
+    this.GAME_HEIGHT = h;
   }
   
   public void keyPressed(KeyEvent e){
@@ -25,13 +25,13 @@ public class EndScreen {
      if (display) {
        g.setColor(Color.white);
        g.setFont(new Font("Consolas", Font.PLAIN, 100));
-       g.drawString("GAME OVER", (int)(GAME_WIDTH*0.16), (int)(GAME_HEIGHT*0.4)); //setting location and text of title cards 
+       g.drawString("GAME OVER", (int)(GAME_WIDTH*0.255), (int)(GAME_HEIGHT*0.4)); //setting location and text of title cards 
     
        g.setFont(new Font("Consolas", Font.PLAIN, 50));
-       g.drawString("Your score is score.score!", (int)(GAME_WIDTH*0.20), (int)(GAME_HEIGHT*0.6));
+       g.drawString("Your score is " + Score.score + "!", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.6));
     
        g.setFont(new Font("Consolas", Font.PLAIN, 50));
-       g.drawString("Press r to play again", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.8));
+       g.drawString("Press r to play again", (int)(GAME_WIDTH*0.23), (int)(GAME_HEIGHT*0.8));
     }
   }
 }
