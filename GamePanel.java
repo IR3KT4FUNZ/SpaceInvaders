@@ -147,6 +147,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
    	      
    	 	 y += 45; // next row of aliens
       }
+     
+      Score.score = 0;
       
       counter = 1; // resets alien movement timing
   }
