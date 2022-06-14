@@ -13,7 +13,7 @@ public class Hearts extends Rectangle {
 
   public Hearts(int x, int y) throws IOException {
     super(x, y, WIDTH, HEIGHT);
-    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship2.png"));
+    img = ImageIO.read(new File("ship2.png"));
   }
   
   public void draw(Graphics g) {
