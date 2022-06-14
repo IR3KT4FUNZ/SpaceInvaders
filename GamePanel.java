@@ -173,6 +173,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   }
 
   public void checkCollision(){
+	if(Title.switchs == true) {
+		reset();
+		Title.switchs = false;
+	}
+	  
     //forces ship to remain on screen
     if(ship.x<= 0){
       ship.x = 0;
