@@ -28,7 +28,7 @@ public class PlayerShip extends Rectangle {
     for (int i = 0; i < 5; i++) {
       bullets[i] = new Projectile(1000, 650, 0, 0);
     }
-    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship3.png"));
+    img = ImageIO.read(new File("ship2.png"));
   }
   
   //check for controls being pressed
