@@ -17,8 +17,8 @@ public class Projectile extends Rectangle {
     super(x, y, LENGTH, WIDTH);
     xVelocity = xVel;
     yVelocity = yVel;
-    bullet3 = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\bullet3.png"));
-    bullet4 = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\bullet4.png"));
+    bullet3 = ImageIO.read(new File("bullet3.png"));
+    bullet4 = ImageIO.read(new File("bullet4.png"));
   }
   
   //helper method
