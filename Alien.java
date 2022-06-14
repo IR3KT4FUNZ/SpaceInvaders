@@ -24,7 +24,7 @@ public class Alien extends Rectangle{
     super(x, y, ALIEN_WIDTH, ALIEN_HEIGHT);
     yspeed = 0;
     xspeed = 0;
-    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\alien.png"));
+    img = ImageIO.read(new File("alien.png"));
   }
 
   //update the position of the ball (called from GamePanel frequently)
