@@ -1,8 +1,8 @@
 import java.awt.*;
 
 public class House extends Rectangle {
-  public static int width = 60; //width of the house
-  public static int height = 48; //height of the house
+  public static int width = 120; //width of the house
+  public static int height = 96; //height of the house
   public boolean[][] alive; //array for squares of the house
   
   //constructor, defines walls
@@ -42,7 +42,7 @@ public class House extends Rectangle {
       for (int j = 0; j < 12; j++) {
         if (alive[i][j]) {
           g.setColor(Color.red);
-          g.fillRect(x + i * 4, y + j * 4, 4, 4);
+          g.fillRect(x + i * 8, y + j * 8, 8, 8);
         }
       }
     }
