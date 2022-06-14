@@ -5,7 +5,7 @@ public class Score{
 
   public static int GAME_WIDTH;//width of the window
   public static int GAME_HEIGHT;//height of the window
-  public int score;
+  public static int score;
 
   //constructor sets score to 0 and establishes dimensions of game window
   public Score(int w, int h){
