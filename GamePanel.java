@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Projectile[] alienBullets = new Projectile[5];
   public long prevAlienShot;
   public final long TIMEDIF = 2500000000l;
+  public Hearts lives;
   
   public GamePanel() throws IOException{
   
@@ -37,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     start = new Title(GAME_WIDTH, GAME_HEIGHT);
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
     back = new Background(GAME_WIDTH, GAME_HEIGHT);
+    lives = new Hearts(GAME_WIDTH, GAME_HEIGHT);
     prevAlienShot = System.nanoTime();
     y = 40;
     
@@ -84,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	start.draw(g);
     }
     else{
+      lives.draw(g);
       for(int i = 0; i < 5; ++i){
         for(int j = 0; j < 11; ++j){
           if(aliens[i][j].dead == false){
@@ -234,9 +237,16 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     //checks if projectile hits player ship
     for(int i = 0; i < 5; ++i) {
     	if(ship.intersects(alienBullets[i])) {
-    		//implement lives system here
-    		score.score -= 1000;
+    		Hearts.lives--;
     		alienBullets[i].x = -10;
+    		
+    		for(int j = 0; j < 5; ++j) {
+				alienBullets[j].x = 1000;
+			}
+    		
+    		if(Hearts.lives == 0) {
+    			//game over here
+    		}
     	}
     }
     
