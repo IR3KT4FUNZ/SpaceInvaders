@@ -88,7 +88,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     if(Title.check == false) { // checks if title has been displayed yet or not
     	start.draw(g);
     }
-    else if(end.display == false){
+    else if(Endscreen.display == false){
       lives.draw(g);
       for(int i = 0; i < 5; ++i){
         for(int j = 0; j < 11; ++j){
@@ -167,7 +167,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
                  aliens[i][j].dead = true;
                  ship.bullets[k].x = 1000;
                  ship.bulletUsed[k] = false;
-                 score.score += 100;
+                 Score.score += 100;
               }
         	  
         	  if(aliens[i][j].dead == false) {
