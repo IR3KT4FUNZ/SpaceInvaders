@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       houses[2] = new House(815, 425);
     }
     for (int i = 0; i < 5; i++) {
-      alienBullets[i] = new Projectile(-10, -10, 0, 0);
+      alienBullets[i] = new Projectile(1000, 650, 0, 0);
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -159,7 +159,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
           for (int k = 0; k < 5; k++) {
         	  if(aliens[i][j].intersects(ship.bullets[k]) && aliens[i][j].dead == false){ //change the projectile name to the name of the projectile object later
                  aliens[i][j].dead = true;
-                 ship.bullets[k].x = -10;
+                 ship.bullets[k].x = 1000;
                  ship.bulletUsed[k] = false;
                  score.score += 100;
               }
@@ -197,35 +197,35 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
           for(int k = 0; k < 5; ++k) {
     		if(ship.bullets[k].x + 4 >= 65 + i * 8 && ship.bullets[k].x + 4 <= 65 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[0].alive[i][j]) {
     		   houses[0].alive[i][j] = false;
-    		   ship.bullets[k].x = -10;
+    		   ship.bullets[k].x = 1000;
     		   ship.bulletUsed[k] = false;
     		}
     			   
     		if(ship.bullets[k].x + 4 >= 440 + i * 8 && ship.bullets[k].x + 4 <= 440 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[1].alive[i][j]) {
      		   houses[1].alive[i][j] = false;
-     		   ship.bullets[k].x = -10;
+     		   ship.bullets[k].x = 1000;
      		   ship.bulletUsed[k] = false;
      		}
     		
     		if(ship.bullets[k].x + 4 >= 815 + i * 8 && ship.bullets[k].x + 4 <= 815 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[2].alive[i][j]) {
      		   houses[2].alive[i][j] = false;
-     		   ship.bullets[k].x = -10;
+     		   ship.bullets[k].x = 1000;
      		   ship.bulletUsed[k] = false;
      		}
     		
     		if(alienBullets[k].x + 4 >= 65 + i * 8 && alienBullets[k].x + 4 <= 65 + i * 8 + 8 && alienBullets[k].y >= 425 + j * 8 && alienBullets[k].y <= 425 + j * 8 + 8 && houses[0].alive[i][j]) {
      		   houses[0].alive[i][j] = false;
-     		   alienBullets[k].x = -10;
+     		   alienBullets[k].x = 1000;
      		}
      			   
     		if(alienBullets[k].x + 4 >= 440 + i * 8 && alienBullets[k].x + 4 <= 440 + i * 8 + 8 && alienBullets[k].y >= 425 + j * 8 && alienBullets[k].y <= 425 + j * 8 + 8 && houses[1].alive[i][j]) {
       		   houses[1].alive[i][j] = false;
-      		   alienBullets[k].x = -10;
+      		   alienBullets[k].x = 1000;
       		}
      		
     		if(alienBullets[k].x + 4 >= 815 + i * 8 && alienBullets[k].x + 4 <= 815 + i * 8 + 8 && alienBullets[k].y >= 425 + j * 8 && alienBullets[k].y <= 425 + j * 8 + 8 && houses[2].alive[i][j]) {
       		   houses[2].alive[i][j] = false;
-      		   alienBullets[k].x = -10;
+      		   alienBullets[k].x = 1000;
       		}
     	  }
        }
@@ -236,7 +236,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	if(ship.intersects(alienBullets[i])) {
     		//implement lives system here
     		score.score -= 1000;
-		alienBullets[i].x = -10;
+    		alienBullets[i].x = -10;
     	}
     }
     
