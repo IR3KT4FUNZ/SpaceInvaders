@@ -151,6 +151,37 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       Score.score = 0;
       
       counter = 1; // resets alien movement timing
+      
+      for(int i = 0; i < 3; ++i) {
+         for (int j = 0; j < 15; j++) {
+    	   for (int k = 0; k < 12; k++) {
+    	     houses[i].alive[j][k] = true;
+    	   }
+    	 }
+         
+    	 houses[i].alive[0][0] = false;
+    	 houses[i].alive[0][1] = false;
+    	 houses[i].alive[0][2] = false;
+    	 houses[i].alive[1][0] = false;
+    	 houses[i].alive[1][1] = false;
+    	 houses[i].alive[2][0] = false;
+    	 houses[i].alive[12][0] = false;
+    	 houses[i].alive[13][0] = false;
+    	 houses[i].alive[13][1] = false;
+    	 houses[i].alive[14][0] = false;
+    	 houses[i].alive[14][1] = false;
+    	 houses[i].alive[14][2] = false;
+    	 
+    	 for (int j = 5; j <= 9; j++) {
+    	    houses[i].alive[j][7] = false; 
+    	 }
+    	 
+    	 for (int j = 4; j <= 10; j++) {
+    	    for (int k = 8; k <= 11; k++) {
+    	       houses[i].alive[j][k] = false; 
+    	    }
+    	 }
+      }
   }
 
   public void move(){
