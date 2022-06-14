@@ -1,20 +1,24 @@
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Projectile extends Rectangle {
 
   public int xVelocity; //horizontal velocity of projectile
   public int yVelocity; //vertical velocity of projectile
-  public static final int SIDELENGTH = 4; //dimension of square projectile
-  public Image bullet1;
-  public Image bullet2;
+  public static final int LENGTH = 10; //dimension of square projectile
+  public static final int WIDTH = 25; //dimension of square projectile
+  public Image bullet3;
+  public Image bullet4;
   
   //constructor creates projectile as a 2x2 square with velocity
-  public Projectile(int x, int y, int xVel, int yVel) {
-    super(x, y, SIDELENGTH, SIDELENGTH);
+  public Projectile(int x, int y, int xVel, int yVel) throws IOException {
+    super(x, y, LENGTH, WIDTH);
     xVelocity = xVel;
     yVelocity = yVel;
-    bullet1 = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\bullet1.png"));
-    bullet2 = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\bullet2.png"));
+    bullet3 = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\bullet3.png"));
+    bullet4 = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\bullet4.png"));
   }
   
   //helper method
@@ -37,9 +41,9 @@ public class Projectile extends Rectangle {
   public void draw(Graphics g) {
     g.setColor(Color.white);
     if (((int) (y / 40)) % 2 == 0) {
-      g.drawImage(bullet1, x, y, 27, 20, null);
+      g.drawImage(bullet3, x, y, 10, 25, null);
     } else {
-      g.drawImage(bullet2, x, y, 27, 20, null);
+      g.drawImage(bullet4, x, y, 10, 25, null);
     }    
   }
 } 
