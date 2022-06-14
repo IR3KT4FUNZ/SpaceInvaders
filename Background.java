@@ -14,7 +14,7 @@ public class Background{
   public Background(int x, int y) throws IOException {
 	  width = x;
 	  height = y;
-    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\background.jpg"));
+    img = ImageIO.read(new File("background.jpg"));
   }
   
   //draw spaceship onto screen(make image)
