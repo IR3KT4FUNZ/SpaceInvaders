@@ -127,6 +127,29 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	  }
   }
   //insert end
+  
+  //resets all objects to their starting position for game restart
+  public void reset() {
+	  Hearts.lives = 3;
+	  
+	  y = 40;
+  	
+     for(int i = 0; i < 5; ++i){
+    	 x = 100; // change to the first alien position later(make it so its centered)
+   	    
+    	 for(int j = 0; j < 11; ++j){
+    		 //resets each alien object
+    		 aliens[i][j].x = x;
+    		 aliens[i][j].y = y;
+    		 x += 40;
+    		 aliens[i][j].dead = false;
+    	 }
+   	      
+   	 	 y += 45; // next row of aliens
+      }
+      
+      counter = 1; // resets alien movement timing
+  }
 
   public void move(){
     long temp;
@@ -312,6 +335,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     //add check that if all aliens dead, then resets wave(i.e. make aliens[i][j].dead == false and reset all the x y positions to the original position)
     //not sure if that goes in the check collision method
+    
+    //if aliens hit bottom, game ends
+    if(aliens[0][10].y >= 550) {
+    	Endscreen.display = true;
+    }
   }
 
   public void run(){
