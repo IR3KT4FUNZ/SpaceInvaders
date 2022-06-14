@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public long prevAlienShot;
   public final long TIMEDIF = 2500000000l;
   public Hearts lives;
+  public Endscreen end;
   
   public GamePanel() throws IOException{
   
@@ -39,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
     back = new Background(GAME_WIDTH, GAME_HEIGHT);
     lives = new Hearts(GAME_WIDTH, GAME_HEIGHT);
+    end = new Endscreen(GAME_WIDTH, GAME_HEIGHT);
     prevAlienShot = System.nanoTime();
     y = 40;
     
@@ -82,10 +84,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   public void draw(Graphics g) throws IOException{
 	back.draw(g);
+	end.draw(g);
     if(Title.check == false) { // checks if title has been displayed yet or not
     	start.draw(g);
     }
-    else{
+    else if(end.display == false){
       lives.draw(g);
       for(int i = 0; i < 5; ++i){
         for(int j = 0; j < 11; ++j){
@@ -245,7 +248,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			}
     		
     		if(Hearts.lives == 0) {
-    			//game over here
+    			Endscreen.display = true;
     		}
     	}
     }
@@ -335,6 +338,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public void keyPressed(KeyEvent e){
     if(Title.check == false) { // checks if title has been displayed yet or not
       start.keyPressed(e);
+    }
+    else if(Endscreen.display == true) {
+       end.keyPressed(e);
     }
     else{
       ship.keyPressed(e);
