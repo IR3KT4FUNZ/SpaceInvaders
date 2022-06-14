@@ -17,7 +17,7 @@ public class EndScreen {
   public void keyPressed(KeyEvent e){
 	 if(e.getKeyChar() == 'r' && display){ // checks if g key is pressed to continue
 	   Title.check = false;
-     display = false;
+   	   display = false;
 	 }
   }
   
