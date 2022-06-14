@@ -18,7 +18,6 @@ public class Title{
 	 if(e.getKeyChar() == 'v'){ // checks if v key is pressed to continue
 	   check = true; // indicates title has been displayed
 	   GamePanel.startTime = System.nanoTime();
-	   Alien.xspeed = 5; // starts movement of alien
 	 }
   }
   
