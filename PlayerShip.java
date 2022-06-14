@@ -26,9 +26,9 @@ public class PlayerShip extends Rectangle {
     velocity = 0;
     Arrays.fill(bulletUsed, false);
     for (int i = 0; i < 5; i++) {
-      bullets[i] = new Projectile(-10, -10, 0, 0);
+      bullets[i] = new Projectile(1000, 650, 0, 0);
     }
-    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship2.png"));
+    img = ImageIO.read(new File("C:\\Users\\334799608\\Downloads\\ship3.png"));
   }
   
   //check for controls being pressed
@@ -82,7 +82,7 @@ public class PlayerShip extends Rectangle {
       bulletUsed[i] = true;
       bullets[i].x = this.x + 15;
       bullets[i].y = this.y - 2;
-      bullets[i].setYVelocity(-10);
+      bullets[i].setYVelocity(-8);
     }
   }
   
