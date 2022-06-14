@@ -7,6 +7,7 @@ public class Title{
   public static int GAME_WIDTH;//width of the window
   public static int GAME_HEIGHT;//height of the window
   public static boolean check = false; // checks if title has been displayed yet
+  public static boolean switchs = false;
 
   //constructor establishes dimensions of game window
   public Title(int w, int h){
@@ -17,6 +18,7 @@ public class Title{
   public void keyPressed(KeyEvent e){
 	 if(e.getKeyChar() == 'v'){ // checks if v key is pressed to continue
 	   check = true; // indicates title has been displayed
+	   switchs = true;
 	   GamePanel.startTime = System.nanoTime();
 	 }
   }
