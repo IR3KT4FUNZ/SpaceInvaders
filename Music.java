@@ -3,6 +3,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+//Class to play sound effects in space invaders
+//Eric Wang, Elliot Ngo, 6/14/2022
+//UNFINISHED!!
+
 class Music {
 	
 	public Clip clip;
