@@ -17,7 +17,7 @@ public class Endscreen {
   
   //check for restart input
   public void keyPressed(KeyEvent e){
-	 if(e.getKeyChar() == 'r' && display){ // checks if g key is pressed to continue
+	 if(e.getKeyChar() == 'r'){ // checks if r key is pressed to continue
 	   Title.check = false;
    	   display = false;
 	 }
