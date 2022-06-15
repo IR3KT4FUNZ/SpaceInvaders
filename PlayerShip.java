@@ -19,6 +19,7 @@ public class PlayerShip extends Rectangle {
   public Projectile[] bullets = new Projectile[5]; //preinitialized bullets
   public boolean[] bulletUsed = new boolean[5]; //check which bullets are in use
   public Image img; //image for the ship
+  public long timeDif = 900000000;
   
   //constructor, use rectangle constructor
   public PlayerShip(int x, int y) throws IOException {
@@ -76,7 +77,7 @@ public class PlayerShip extends Rectangle {
   //set projectile velocity and starting position
   public void shoot() {
     long temp = System.nanoTime();
-    if (temp - lastShot > 900000000) {
+    if (temp - lastShot > timeDif) {
       lastShot = temp;
       int i = getBullet();
       bulletUsed[i] = true;
