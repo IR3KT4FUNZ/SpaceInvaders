@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Background back; //background
   public Projectile[] alienBullets = new Projectile[5]; //pregenerated bullets for aliens
   public long prevAlienShot; //used to determine how often aliens can shoot
-  public final long TIMEDIF = 2500000000l; //preset time difference
+  public final long timeDif2 = 2500000000l; //preset time difference
   public Hearts lives; //lives of player
   public Endscreen end; //end screen
 	
@@ -235,6 +235,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
                  ship.bullets[k].x = 1000;
                  ship.bulletUsed[k] = false;
                  Score.score += 100;
+		 timeDif2 -= 20000000;
+		 timeDif1 -= 8000000;
               }
         	  
         	  if(aliens[i][j].dead == false) {
