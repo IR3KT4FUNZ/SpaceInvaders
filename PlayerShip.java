@@ -6,7 +6,7 @@ import javax.imageio.*;
 import java.io.*;
 
 //Player controlled ship for space invaders
-//Eric, Elliot, 05/31/2022
+//Eric Wang, Elliot Ngo, 6/14/2022
 
 public class PlayerShip extends Rectangle {
   public static final int HEIGHT = 40; //height of ship
@@ -15,10 +15,10 @@ public class PlayerShip extends Rectangle {
   public final int SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
   public boolean shooting = false; //whether the user is holding shoot
-  public long lastShot = -1000000000;
-  public Projectile[] bullets = new Projectile[5];
-  public boolean[] bulletUsed = new boolean[5];
-  public Image img;
+  public long lastShot = -1000000000; //used to set how often the user can shoot
+  public Projectile[] bullets = new Projectile[5]; //preinitialized bullets
+  public boolean[] bulletUsed = new boolean[5]; //check which bullets are in use
+  public Image img; //image for the ship
   
   //constructor, use rectangle constructor
   public PlayerShip(int x, int y) throws IOException {
@@ -31,7 +31,7 @@ public class PlayerShip extends Rectangle {
     img = ImageIO.read(new File("ship2.png"));
   }
   
-  //check for controls being pressed
+  //check for controls being pressed/used
   public void keyPressed(KeyEvent e) {
     if (e.getKeyChar() == 'z') {
       velocity = SPEED * -1;
