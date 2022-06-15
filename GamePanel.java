@@ -308,6 +308,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     for(int i = 0; i < 5; ++i) {
     	if(ship.intersects(alienBullets[i])) {
     		Hearts.lives--;
+		ship.x = GAME_WIDTH / 2 - PlayerShip.WIDTH / 2;
     		alienBullets[i].x = -10;
     		
     		for(int j = 0; j < 5; ++j) {
