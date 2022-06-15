@@ -72,6 +72,11 @@ public class PlayerShip extends Rectangle {
   //move the ship
   public void move() {
     x = x + velocity;
+    for (int i = 0; i < 5; i++) {
+      if (bullets[i].y < 0) {
+        bulletUsed[i] = false; 
+      }
+    }
   }
   
   //set projectile velocity and starting position
@@ -89,8 +94,6 @@ public class PlayerShip extends Rectangle {
   
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
-    g.setColor(Color.white);
-    //g.fillRect(x, y, WIDTH, HEIGHT);
     g.drawImage(img, x, y, 40, 40, null);
   }
 }
