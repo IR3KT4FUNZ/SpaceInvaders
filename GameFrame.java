@@ -1,17 +1,12 @@
-/* GameFrame class establishes the frame (window) for the game
-It is a child of JFrame because JFrame manages frames
-Runs the constructor in GamePanel class
-
-*/ 
-
 import java.awt.*;
 import java.io.IOException;
-
 import javax.swing.*;
 
+//Game frame for space invaders, base code taken from Mr. Anthony pong sample code
+//Eric Wang, Elliot Ngo, 6/14/2022
 public class GameFrame extends JFrame{
 
-  GamePanel panel;
+  GamePanel panel; //panel of game
 
   public GameFrame() throws IOException{
     panel = new GamePanel(); //run GamePanel constructor
