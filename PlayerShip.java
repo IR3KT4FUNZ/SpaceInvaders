@@ -19,7 +19,7 @@ public class PlayerShip extends Rectangle {
   public Projectile[] bullets = new Projectile[5]; //preinitialized bullets
   public boolean[] bulletUsed = new boolean[5]; //check which bullets are in use
   public Image img; //image for the ship
-  public long timeDif = 900000000;
+  public long timeDif = 1000000000; //revert
   
   //constructor, use rectangle constructor
   public PlayerShip(int x, int y) throws IOException {
@@ -72,10 +72,10 @@ public class PlayerShip extends Rectangle {
   //move the ship
   public void move() {
     x = x + velocity;
-    for (int i = 0; i < 5; i++) {
-      if (bullets[i].y < 0) {
-        bulletUsed[i] = false; 
-      }
+    for(int i = 0; i < 5; ++i) {
+    	if(bullets[i].y < 0) {
+    		bulletUsed[i] = false;
+    	}
     }
   }
   
@@ -94,6 +94,7 @@ public class PlayerShip extends Rectangle {
   
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
+    g.setColor(Color.white);
     g.drawImage(img, x, y, 40, 40, null);
   }
 }
