@@ -2,37 +2,40 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+//Game panel class for space invaders
+//Eric Wang, Elliot Ngo, 6/14/2022
+
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
-  public static final int GAME_WIDTH = 1000;
-  public static final int GAME_HEIGHT = 650;
+  public static final int GAME_WIDTH = 1000; //width of frame
+  public static final int GAME_HEIGHT = 650; //height of frame
   
-  public Thread gameThread;
-  public Image image;
-  public Graphics graphics;
-  public Alien[][] aliens = new Alien[5][11];
-  public PlayerShip ship;
-  public Title start;
-  public static long startTime; //when game starts, set starttime to that time
-  public static long startTime2;
-  public Score score;
-  public boolean direction = true;
-  public boolean downwardmove = false;
-  public double counter = 1;
-  public boolean alldead = true;
+  public Thread gameThread; //thread the game runs in
+  public Image image; //offscreen drawing image for the game
+  public Graphics graphics; //graphics of the game
+  public Alien[][] aliens = new Alien[5][11]; //array of aliens
+  public PlayerShip ship; //player controlled ship
+  public Title start; //title screen
+  public static long startTime; //when game starts, set to the time
+  public static long startTime2; //second start time used for different purpose
+  public Score score; //player's score
+  public boolean direction = true; //x direction 
+  public boolean downwardmove = false; //y direction
+  public double counter = 1; //counter for aliens
+  public boolean alldead = true; //check if all aliens are dead
   public int x, y; // coordinates for setting each alien position
-  public House[] houses = new House[3];
-  public Background back;
-  public Projectile[] alienBullets = new Projectile[5];
-  public long prevAlienShot;
-  public final long TIMEDIF = 2500000000l;
-  public Hearts lives;
-  public Endscreen end;
-  
+  public House[] houses = new House[3]; //array of houses
+  public Background back; //background
+  public Projectile[] alienBullets = new Projectile[5]; //pregenerated bullets for aliens
+  public long prevAlienShot; //used to determine how often aliens can shoot
+  public final long TIMEDIF = 2500000000l; //preset time difference
+  public Hearts lives; //lives of player
+  public Endscreen end; //end screen
+	
+  //constructor initializes everything to proper values
   public GamePanel() throws IOException{
   
     ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, 550);
@@ -69,6 +72,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     gameThread.start();
   }
   
+  //paint function
   public void paint(Graphics g){
     image = createImage(GAME_WIDTH, GAME_HEIGHT);
     graphics = image.getGraphics();
@@ -82,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   }
 
+  //draw necessary things to screen
   public void draw(Graphics g) throws IOException{
 	back.draw(g);
 	end.draw(g);
@@ -111,7 +116,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
   }
   
-//pick random aliens(changes start)
+  //pick random aliens
   public int random() {
     return ((int) (Math.random() * 55.0));
   }
@@ -126,7 +131,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	   	temp = random();
 	  }
   }
-  //insert end
   
   //resets all objects to their starting position for game restart
   public void reset() {
@@ -183,7 +187,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	 }
       }
   }
-
+  
+  //moves everything on screen that should move
   public void move(){
     long temp;
     ship.move();
@@ -203,6 +208,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
   }
 
+  //checks for collisions between bullets and houses, ship, aliens
   public void checkCollision(){
 	if(Title.switchs == true) {
 		reset();
@@ -379,7 +385,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	Endscreen.display = true;
     }
   }
-
+  
+  //infinite loop of the game
   public void run(){
     long lastTime = System.nanoTime();
     double amountOfTicks = 60;
@@ -401,6 +408,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     }
   }
 
+  //check for keyboard input
   public void keyPressed(KeyEvent e){
     if(Title.check == false) { // checks if title has been displayed yet or not
       start.keyPressed(e);
@@ -412,11 +420,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       ship.keyPressed(e);
     }
   }
-
+  
+  //check for keys being released
   public void keyReleased(KeyEvent e){
     ship.keyReleased(e);
   }
 
+  //place holder(must include this class)
   public void keyTyped(KeyEvent e){
 
   }
