@@ -1,11 +1,14 @@
 import java.awt.*;
 
+//Houses class for space invaders
+//Eric Wang, Elliot Ngo, 6/14/2022
+
 public class House extends Rectangle {
   public static int width = 120; //width of the house
   public static int height = 96; //height of the house
   public boolean[][] alive; //array for squares of the house
   
-  //constructor, defines walls
+  //constructor, creates house shape
   public House(int x, int y) {
     super(x, y, width, height);
     alive = new boolean[15][12];
@@ -52,6 +55,5 @@ public class House extends Rectangle {
   public void setDead(int i, int j) {
     alive[i][j] = false;
   }
-  
   
 } 
