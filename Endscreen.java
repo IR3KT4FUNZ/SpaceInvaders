@@ -1,6 +1,7 @@
-//Menu class for displaying title
 import java.awt.*;
 import java.awt.event.KeyEvent;
+//End display screen for space invaders
+//Eric Wang, Elliot Ngo, 6/14/2022
 
 public class Endscreen {
 
@@ -14,6 +15,7 @@ public class Endscreen {
     this.GAME_HEIGHT = h;
   }
   
+  //check for restart input
   public void keyPressed(KeyEvent e){
 	 if(e.getKeyChar() == 'r' && display){ // checks if g key is pressed to continue
 	   Title.check = false;
@@ -21,6 +23,7 @@ public class Endscreen {
 	 }
   }
   
+  //draw endscreen 
   public void draw(Graphics g){
      if (display) {
        g.setColor(Color.white);
