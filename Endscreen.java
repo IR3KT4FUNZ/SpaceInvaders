@@ -31,7 +31,13 @@ public class Endscreen {
        g.drawString("GAME OVER", (int)(GAME_WIDTH*0.255), (int)(GAME_HEIGHT*0.4)); //setting location and text of title cards 
     
        g.setFont(new Font("Consolas", Font.PLAIN, 50));
-       g.drawString("Your score is " + Score.score + "!", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.6));
+       
+       if(Score.score % 100 == 0) {
+    	   g.drawString("Your score is " + Score.score + "!", (int)(GAME_WIDTH*0.27), (int)(GAME_HEIGHT*0.6));
+       }
+       else {
+    	   g.drawString("Your score is " + Score.score + "!", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.6));
+       }
     
        g.setFont(new Font("Consolas", Font.PLAIN, 50));
        g.drawString("Press r to play again", (int)(GAME_WIDTH*0.23), (int)(GAME_HEIGHT*0.8));
