@@ -16,22 +16,26 @@ public class Instructions {
   }
   
   //check for restart input
-  public void keyPressed(KeyEvent e){
-	 if(e.getKeyChar() == 'i' && Title.check = false){ // checks if r key is pressed to continue
-	   Title.check = true;
-   	 display = true;
-	 }
-   if (e.getKeyChar() == 'o' && display = true;) {
-     Title.check = false;
-     display = false;
-   }
+  public void keyPressed(KeyEvent e) {
+     if (e.getKeyChar() == 'o') {
+       Title.check = false;
+       display = false;
+     }
   }
   
   //draw endscreen 
   public void draw(Graphics g){
-     if (display) {
-       g.setColor(Color.white);
-       g.setFont(new Font("Consolas", Font.PLAIN, 100));
-    }
+	  g.setColor(Color.white);
+	  g.setFont(new Font("Consolas", Font.PLAIN, 100));
+	  g.drawString("INSTRUCTIONS", (int)(GAME_WIDTH*0.16), (int)(GAME_HEIGHT*0.2)); //setting location and text of title cards 
+	    
+	  g.setFont(new Font("Consolas", Font.PLAIN, 50));
+	  g.drawString("Use ZX to move the ship", (int)(GAME_WIDTH*0.18), (int)(GAME_HEIGHT*0.4));
+	    
+	  g.setFont(new Font("Consolas", Font.PLAIN, 50));
+	  g.drawString("Press C to shoot", (int)(GAME_WIDTH*0.26), (int)(GAME_HEIGHT*0.6));
+	  
+	  g.setFont(new Font("Consolas", Font.PLAIN, 50));
+	  g.drawString("Press O to return to menu", (int)(GAME_WIDTH*0.15), (int)(GAME_HEIGHT*0.8));
   }
 }
