@@ -11,7 +11,7 @@ import java.io.*;
 public class PlayerShip extends Rectangle {
   public static final int HEIGHT = 40; //height of ship
   public static final int WIDTH = 40; //width of ship
-  public static final int YCOORD = 700; //constant y coordinate of ship
+  public static final int YCOORD = 550; //constant y coordinate of ship
   public final int SPEED = 10; //speed the ship always moves at
   public int velocity; //speed of ship with direction
   public boolean shooting = false; //whether the user is holding shoot
@@ -95,6 +95,7 @@ public class PlayerShip extends Rectangle {
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
     g.setColor(Color.white);
+    //g.fillRect(x, y, WIDTH, HEIGHT);
     g.drawImage(img, x, y, 40, 40, null);
   }
 }
