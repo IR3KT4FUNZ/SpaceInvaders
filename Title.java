@@ -21,6 +21,11 @@ public class Title{
 	   switchs = true;
 	   GamePanel.startTime = System.nanoTime();
 	 }
+	 
+	 if(e.getKeyChar() == 'i') {
+		 Instructions.display = true;
+		 check = true;
+	 }
   }
   
   //called frequently from GamePanel class
@@ -31,9 +36,9 @@ public class Title{
      g.drawString("SPACE INVADERS", (int)(GAME_WIDTH*0.14), (int)(GAME_HEIGHT*0.4)); //setting location and text of title cards 
     
      g.setFont(new Font("Consolas", Font.PLAIN, 50));
-     g.drawString("Use ZX and C to play", (int)(GAME_WIDTH*0.24), (int)(GAME_HEIGHT*0.6));
+     g.drawString("Press V to start", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.6));
     
      g.setFont(new Font("Consolas", Font.PLAIN, 50));
-     g.drawString("Press V to start", (int)(GAME_WIDTH*0.29), (int)(GAME_HEIGHT*0.8));
+     g.drawString("Press I for instructions", (int)(GAME_WIDTH*0.20), (int)(GAME_HEIGHT*0.8));
   }
 }
