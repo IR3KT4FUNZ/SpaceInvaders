@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     back = new Background(GAME_WIDTH, GAME_HEIGHT);
     lives = new Hearts(GAME_WIDTH, GAME_HEIGHT);
     end = new Endscreen(GAME_WIDTH, GAME_HEIGHT);
-    instructions = new EndScreen(GAME_WIDTH, GAME_HEIGHT);
+    instructions = new Instructions(GAME_WIDTH, GAME_HEIGHT);
     prevAlienShot = System.nanoTime();
     y = 40;
     
@@ -91,13 +91,20 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   //draw necessary things to screen
   public void draw(Graphics g) throws IOException{
 	back.draw(g);
-	end.draw(g);
-	instructions.draw(g);
     if(Title.check == false) { // checks if title has been displayed yet or not
     	start.draw(g);
     }
-    else if(Endscreen.display == false){
+    else if(Instructions.display == true) {
+    	instructions.draw(g);
+    }
+    else if(Endscreen.display == true) {
+    	end.draw(g);
+    }
+    else{
       lives.draw(g);
+      for (int i = 0; i < 3; i++) {
+    	  houses[i].draw(g);
+      }
       for(int i = 0; i < 5; ++i){
         for(int j = 0; j < 11; ++j){
           if(aliens[i][j].dead == false){
@@ -110,9 +117,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	  ship.bullets[i].draw(g);
       }
       score.draw(g);
-      for (int i = 0; i < 3; i++) {
-    	  houses[i].draw(g);
-      }
       for(int i = 0; i < 5; ++i) {
     	  alienBullets[i].draw(g);
       }
@@ -241,10 +245,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
                  ship.bullets[k].x = 1000;
                  ship.bulletUsed[k] = false;
                  Score.score += 100;
-		         if(timeDif2 >= 500000000) { //decreases time between shots for both aliens and player
+		         if(timeDif2 >= 1400000000) { //decreases time between shots for both aliens and player
 		        	 timeDif2 -= 20000000;
 		         }
-		         if(ship.timeDif >= 200000000) {
+		         if(ship.timeDif >= 560000000) {
 		        	 ship.timeDif -= 8000000;
 		         }
               }
@@ -363,7 +367,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = false;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 20;
+    	Alien.yspeed = 25;
     }
     
     if(aliens[0][0].x <= 0) {
@@ -372,7 +376,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	direction = true;
     	downwardmove = true;
     	startTime2 = System.nanoTime();
-    	Alien.yspeed = 20;
+    	Alien.yspeed = 25;
     	/*
     	for(int i = 0; i < 5; ++i){
     	  for(int j = 0; j < 11; ++j){
@@ -423,12 +427,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   //check for keyboard input
   public void keyPressed(KeyEvent e){
-    instructions.keyPressed(e);
     if(Title.check == false) { // checks if title has been displayed yet or not
       start.keyPressed(e);
     }
     else if(Endscreen.display == true) {
        end.keyPressed(e);
+    }
+    else if(Instructions.display == true) {
+    	instructions.keyPressed(e);
     }
     else{
       ship.keyPressed(e);
