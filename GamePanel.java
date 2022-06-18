@@ -38,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   
   public Music death = new Music();
   public Music aliendeath = new Music();
+  public static Music movement = new Music();
 	
   //constructor initializes everything to proper values
   public GamePanel() throws IOException{
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     death.musicCreate("explosion.wav");
     aliendeath.musicCreate("invaderkilled.wav");
+    movement.musicCreate("moving.wav");
     
     y = 40;
     
@@ -343,6 +345,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			}
     		
     		if(Hearts.lives == 0) {
+    			movement.stop();
     			Endscreen.display = true;
     		}
     	}
