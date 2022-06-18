@@ -20,6 +20,7 @@ public class Title{
 	   check = true; // indicates title has been displayed
 	   switchs = true;
 	   GamePanel.startTime = System.nanoTime();
+	   GamePanel.movement.loop();
 	 }
 	 
 	 if(e.getKeyChar() == 'i') {
