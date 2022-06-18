@@ -35,6 +35,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Hearts lives; //lives of player
   public Endscreen end; //end screen
   public Instructions instructions; //instruction screen
+  
+  public Music death = new Music();
 	
   //constructor initializes everything to proper values
   public GamePanel() throws IOException{
@@ -47,6 +49,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     end = new Endscreen(GAME_WIDTH, GAME_HEIGHT);
     instructions = new Instructions(GAME_WIDTH, GAME_HEIGHT);
     prevAlienShot = System.nanoTime();
+    
+    death.musicCreate("explosion.wav");
+    
     y = 40;
     
     for(int i = 0; i < 5; ++i){
@@ -324,7 +329,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     for(int i = 0; i < 5; ++i) {
     	if(ship.intersects(alienBullets[i])) {
     		Hearts.lives--;
-		ship.x = GAME_WIDTH / 2 - PlayerShip.WIDTH / 2;
+    		
+    		death.play();
+    		
+		    ship.x = GAME_WIDTH / 2 - PlayerShip.WIDTH / 2;
     		alienBullets[i].x = -10;
     		
     		for(int j = 0; j < 5; ++j) {
