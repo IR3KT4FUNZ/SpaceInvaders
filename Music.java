@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 
 //Class to play sound effects in space invaders
 //Eric Wang, Elliot Ngo, 6/14/2022
-//UNFINISHED!!
+//FINISHED :)
 
 class Music {
 	
@@ -32,6 +32,11 @@ class Music {
         clip.setFramePosition(0);  //sets music to start of file
         clip.start(); // plays music
     }
+	
+	public void loop() {
+		clip.setFramePosition(0);  //sets music to start of file
+		clip.loop(Clip.LOOP_CONTINUOUSLY);
+	}
 	
 	public void stop(){
          clip.stop(); // stops music
