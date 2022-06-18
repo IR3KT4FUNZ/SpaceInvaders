@@ -22,6 +22,10 @@ public class PlayerShip extends Rectangle {
   public Image shootingImg; //image for ship when it shoots
   public long timeDif = 1000000000; //revert
   
+  public static String sound1 = "shoot.wav";
+  
+  public static Music shootsound = new Music();
+  
   //constructor, use rectangle constructor
   public PlayerShip(int x, int y) throws IOException {
     super(x, y, WIDTH, HEIGHT);
@@ -32,6 +36,7 @@ public class PlayerShip extends Rectangle {
     }
     img = ImageIO.read(new File("ship2.png"));
     shootingImg = ImageIO.read(new File("shootingship.png"));
+    shootsound.musicCreate(sound1);
   }
   
   //check for controls being pressed/used
@@ -85,6 +90,7 @@ public class PlayerShip extends Rectangle {
   public void shoot() {
     long temp = System.nanoTime();
     if (temp - lastShot > timeDif) {
+      shootsound.play();
       lastShot = temp;
       int i = getBullet();
       bulletUsed[i] = true;
