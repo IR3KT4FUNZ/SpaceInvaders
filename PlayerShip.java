@@ -96,7 +96,7 @@ public class PlayerShip extends Rectangle {
   
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
-    if (System.nanoTime - lastShot > 100000000) {
+    if (System.nanoTime() - lastShot > 100000000) {
       g.drawImage(shootingImg, x, y, 40, 40, null);
     } else {
       g.drawImage(img, x, y, 40, 40, null);
