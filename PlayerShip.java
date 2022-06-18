@@ -19,6 +19,7 @@ public class PlayerShip extends Rectangle {
   public Projectile[] bullets = new Projectile[5]; //preinitialized bullets
   public boolean[] bulletUsed = new boolean[5]; //check which bullets are in use
   public Image img; //image for the ship
+  public Image shootingImg; //image for ship when it shoots
   public long timeDif = 1000000000; //revert
   
   //constructor, use rectangle constructor
@@ -30,6 +31,7 @@ public class PlayerShip extends Rectangle {
       bullets[i] = new Projectile(1000, 650, 0, 0);
     }
     img = ImageIO.read(new File("ship2.png"));
+    shootingImg = ImageIO.read(new File("shootingship.png"));
   }
   
   //check for controls being pressed/used
@@ -94,8 +96,10 @@ public class PlayerShip extends Rectangle {
   
   //draw spaceship onto screen(make image)
   public void draw(Graphics g) {
-    g.setColor(Color.white);
-    //g.fillRect(x, y, WIDTH, HEIGHT);
-    g.drawImage(img, x, y, 40, 40, null);
+    if (System.nanoTime - lastShot > 100000000) {
+      g.drawImage(shootingImg, x, y, 40, 40, null);
+    } else {
+      g.drawImage(img, x, y, 40, 40, null);
+    }
   }
 }
