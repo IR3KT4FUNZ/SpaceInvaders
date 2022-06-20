@@ -22,7 +22,7 @@ public class Hearts extends Rectangle {
   
   //display as many lives as the player has
   public void draw(Graphics g) {
-    if(lives == 3) {
+    if(lives == 3) { // checks how many lives you have, then draw the required amount
       g.drawImage(img, 900, 10, WIDTH, HEIGHT, null);
       g.drawImage(img, 930, 10, WIDTH, HEIGHT, null);
       g.drawImage(img, 960, 10, WIDTH, HEIGHT, null);
