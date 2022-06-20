@@ -36,13 +36,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public Endscreen end; //end screen
   public Instructions instructions; //instruction screen
   
-  public Music death = new Music();
+  public Music death = new Music(); // new music objects for each sfx
   public Music aliendeath = new Music();
   public static Music movement = new Music();
 	
   //constructor initializes everything to proper values
   public GamePanel() throws IOException{
   
+    //intialization of each object at correct position	  
     ship = new PlayerShip(GAME_WIDTH/2 - PlayerShip.WIDTH / 2, 550);
     start = new Title(GAME_WIDTH, GAME_HEIGHT);
     score = new Score(GAME_WIDTH, GAME_HEIGHT);
@@ -52,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     instructions = new Instructions(GAME_WIDTH, GAME_HEIGHT);
     prevAlienShot = System.nanoTime();
     
-    death.musicCreate("explosion.wav");
+    death.musicCreate("explosion.wav"); // creats music files
     aliendeath.musicCreate("invaderkilled.wav");
     movement.musicCreate("moving.wav");
     
@@ -73,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
       houses[2] = new House(815, 425);
     }
     for (int i = 0; i < 5; i++) {
-      alienBullets[i] = new Projectile(1000, 650, 0, 0);
+      alienBullets[i] = new Projectile(1000, 650, 0, 0); // creates each alien bullet
     }
   
     this.setFocusable(true); //make everything in this class appear on the screen
@@ -99,8 +100,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
   //draw necessary things to screen
   public void draw(Graphics g) throws IOException{
-	back.draw(g);
-    if(Title.check == false) { // checks if title has been displayed yet or not
+	back.draw(g); // draws background
+    if(Title.check == false) { // checks whether to display start screen, instructions screen, end screen, or game
     	start.draw(g);
     }
     else if(Instructions.display == true) {
@@ -137,7 +138,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     return ((int) (Math.random() * 55.0));
   }
   
-  public void alienShots() {
+  public void alienShots() { //picks 5 aliens to shoot a projectile
 	  int temp = random(), counter = 0;
 	  while(counter != 5) {
 	   	if(aliens[temp / 11][temp % 11].dead == false) {
@@ -253,10 +254,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
           for (int k = 0; k < 5; k++) {
         	  if(aliens[i][j].intersects(ship.bullets[k]) && aliens[i][j].dead == false){ //change the projectile name to the name of the projectile object later
                  aliendeath.play();
-        		 aliens[i][j].dead = true;
-                 ship.bullets[k].x = 1000;
-                 ship.bulletUsed[k] = false;
-                 Score.score += 100;
+        		 aliens[i][j].dead = true; // sets alien to be dead
+                 ship.bullets[k].x = 1000; // sets bullet offscreen
+                 ship.bulletUsed[k] = false; // sets bullet as unused
+                 Score.score += 100; // increases score
 		         if(timeDif2 >= 1400000000) { //decreases time between shots for both aliens and player
 		        	 timeDif2 -= 20000000;
 		         }
@@ -295,11 +296,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     //checks if projectile hits house/wall
     for (int i = 0; i < 15; i++) {
        for (int j = 0; j < 12; j++) {
-          for(int k = 0; k < 5; ++k) {
+          for(int k = 0; k < 5; ++k) { // cycles through and checks if each bullet hits each house
     		if(ship.bullets[k].x + 4 >= 65 + i * 8 && ship.bullets[k].x + 4 <= 65 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[0].alive[i][j]) {
-    		   houses[0].alive[i][j] = false;
-    		   ship.bullets[k].x = 1000;
-    		   ship.bulletUsed[k] = false;
+    		   houses[0].alive[i][j] = false; //sets house part to dead
+    		   ship.bullets[k].x = 1000; //sets bullet offscreen
+    		   ship.bulletUsed[k] = false; //sets bullet as unused
     		}
     			   
     		if(ship.bullets[k].x + 4 >= 440 + i * 8 && ship.bullets[k].x + 4 <= 440 + i * 8 + 8 && ship.bullets[k].y >= 425 + j * 8 && ship.bullets[k].y <= 425 + j * 8 + 8 && houses[1].alive[i][j]) {
@@ -335,40 +336,34 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     //checks if projectile hits player ship
     for(int i = 0; i < 5; ++i) {
     	if(ship.intersects(alienBullets[i])) {
-    		Hearts.lives--;
+    		Hearts.lives--; //decreases lives
     		
-    		death.play();
+    		death.play(); //plays music
     		
-		    ship.x = GAME_WIDTH / 2 - PlayerShip.WIDTH / 2;
-    		alienBullets[i].x = -10;
-    		
+		    ship.x = GAME_WIDTH / 2 - PlayerShip.WIDTH / 2; // sets ship to center of screen after hit
+		
     		for(int j = 0; j < 5; ++j) {
-				alienBullets[j].x = 1000;
+				alienBullets[j].x = 1000; // moves alien bullets offscreen
 			}
     		
     		if(Hearts.lives == 0) {
-    			movement.stop();
-    			Endscreen.display = true;
+    			movement.stop(); //stops music
+    			Endscreen.display = true; // sets endscreen to be displayed
     		}
     	}
     }
     
-    ///if(projectile.intersects(ship)){ //change the projectile name to the name of the projectile object later
-       //add code here that decreases number of lives
-       //also add code that if number of lives = 0, then display the end screen and stop game
-    //}
     
+    //checks if some amount of time has passed, if so then moves alien(for staggered movement)
     
-    //checks if at one second has passed, if so then moves alien(for staggered movement)
-    
-    if(System.nanoTime() - startTime >= 500000000/counter) { // note to increase movement, just change the 1000000000 number to a smaller number as time goes on
-    	if(direction) {
+    if(System.nanoTime() - startTime >= 500000000/counter) {
+    	if(direction) { // checks which direction its going
     		Alien.xspeed = 10;
     	}
     	else {
     		Alien.xspeed = -10;
     	}
-    	startTime = System.nanoTime();
+    	startTime = System.nanoTime(); //resets time
     }
     else {
     	Alien.xspeed = 0;
@@ -402,7 +397,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     	*/
     }
     
-    //supposed to make alien move down a bit
+    //moves alien down
     if(downwardmove) {
     	if(System.nanoTime() - startTime2 >= 10000) {
     		Alien.yspeed = 0;
