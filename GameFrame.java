@@ -2,7 +2,7 @@ import java.awt.*;
 import java.io.IOException;
 import javax.swing.*;
 
-//Game frame for space invaders, base code taken from Mr. Anthony pong sample code
+//Game frame for space invaders
 //Eric Wang, Elliot Ngo, 6/14/2022
 public class GameFrame extends JFrame{
 
