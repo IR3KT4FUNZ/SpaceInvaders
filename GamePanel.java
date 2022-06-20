@@ -257,7 +257,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
         		 aliens[i][j].dead = true; // sets alien to be dead
                  ship.bullets[k].x = 1000; // sets bullet offscreen
                  ship.bulletUsed[k] = false; // sets bullet as unused
-                 Score.score += 100; // increases score
+                 if (Hearts.lives > 0){
+                	 Score.score += 100; // increases score
+		 }
 		         if(timeDif2 >= 1400000000) { //decreases time between shots for both aliens and player
 		        	 timeDif2 -= 20000000;
 		         }
