@@ -19,7 +19,7 @@ public class Background{
     img = ImageIO.read(new File("background.jpg"));
   }
   
-  //draw spaceship onto screen(make image)
+  //draw background onto screen(make image)
   public void draw(Graphics g) {
     g.drawImage(img, 0, 0, width, height, null);
   }
