@@ -152,6 +152,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
   public void reset() {
 	  Hearts.lives = 3;
 	  
+	  ship.x = GAME_WIDTH/2 - PlayerShip.WIDTH / 2;
+	  
 	  timeDif2 = 2500000000l;
 	  ship.timeDif = 1000000000;
 	  
