@@ -253,13 +253,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
         for(int j = 0; j < 11; ++j){
           for (int k = 0; k < 5; k++) {
         	  if(aliens[i][j].intersects(ship.bullets[k]) && aliens[i][j].dead == false){ //change the projectile name to the name of the projectile object later
-                 aliendeath.play();
+                 	if (Hearts.lives > 0){
+                 		 Score.score += 100; // increases score
+                 		 aliendeath.play(); //plays sound
+                	 }
         		 aliens[i][j].dead = true; // sets alien to be dead
-                 ship.bullets[k].x = 1000; // sets bullet offscreen
-                 ship.bulletUsed[k] = false; // sets bullet as unused
-                 if (Hearts.lives > 0){
-                	 Score.score += 100; // increases score
-		 }
+                	 ship.bullets[k].x = 1000; // sets bullet offscreen
+                	 ship.bulletUsed[k] = false; // sets bullet as unused
 		         if(timeDif2 >= 1400000000) { //decreases time between shots for both aliens and player
 		        	 timeDif2 -= 20000000;
 		         }
