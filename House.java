@@ -17,7 +17,7 @@ public class House extends Rectangle {
         alive[i][j] = true;
       }
     }
-    alive[0][0] = false;
+    alive[0][0] = false; // sets some areas of house as not displayed to get desired shape
     alive[0][1] = false;
     alive[0][2] = false;
     alive[1][0] = false;
