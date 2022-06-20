@@ -32,7 +32,7 @@ public class Endscreen {
     
        g.setFont(new Font("Consolas", Font.PLAIN, 50));
        
-       if(Score.score % 100 == 0) {
+       if(Score.score % 100 == 0) { // if more digits to score, center text differently
     	   g.drawString("Your score is " + Score.score + "!", (int)(GAME_WIDTH*0.27), (int)(GAME_HEIGHT*0.6));
        }
        else {
